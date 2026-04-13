@@ -1,0 +1,63 @@
+diff --git a/ellipse_losses.py b/ellipse_losses.py
+index 9ca3fdd..0000000 100644
+--- a/ellipse_losses.py
++++ b/ellipse_losses.py
+@@ -19,6 +19,14 @@ def soft_iou_loss(pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
+     iou = (inter + EPS) / (union + EPS)
+     return 1.0 - iou.mean()
+ 
++
++def safe_binary_cross_entropy(pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
++    device_type = pred.device.type
++    with torch.autocast(device_type=device_type, enabled=False):
++        pred_fp32 = pred.float().clamp(EPS, 1.0 - EPS)
++        target_fp32 = target.float()
++        return F.binary_cross_entropy(pred_fp32, target_fp32)
++
+ 
+ def mask_moments(mask: torch.Tensor) -> dict[str, torch.Tensor]:
+     if mask.ndim != 4 or mask.shape[1] != 1:
+@@ -100,7 +108,7 @@ class EllipseReconstructionLoss(nn.Module):
+     def forward(self, pred_mask: torch.Tensor, target_mask: torch.Tensor, decoded: dict[str, torch.Tensor], gt_params: torch.Tensor) -> tuple[torch.Tensor, dict[str, float]]:
+         loss_dice = soft_dice_loss(pred_mask, target_mask)
+         loss_iou = soft_iou_loss(pred_mask, target_mask)
+-        loss_bce = F.binary_cross_entropy(pred_mask, target_mask)
++        loss_bce = safe_binary_cross_entropy(pred_mask, target_mask)
+         loss_moment = moment_loss(pred_mask, target_mask)
+         loss_param = parameter_loss(decoded, gt_params)
+         total = (
+@@ -121,6 +129,7 @@ __all__ = [
+     "EllipseReconstructionLoss",
+     "soft_dice_loss",
+     "soft_iou_loss",
++    "safe_binary_cross_entropy",
+     "moment_loss",
+     "parameter_loss",
+     "mask_moments",
+diff --git a/train_ellipse.py b/train_ellipse.py
+index 1907f65..0000000 100644
+--- a/train_ellipse.py
++++ b/train_ellipse.py
+@@ -67,6 +67,10 @@ def parse_args() -> argparse.Namespace:
+ def main() -> None:
+     args = parse_args()
+     torch.manual_seed(args.seed)
++
++    if args.amp:
++        print("Warning: AMP is disabled in this project. Forcing args.amp=False.")
++        args.amp = False
+ 
+     config = build_dataset_config(args)
+     validate_dataset_config(config, require_train_split=not args.eval_only)
+diff --git a/README_centroid_conditioned_ellipse.md b/README_centroid_conditioned_ellipse.md
+index 0a02df5..0000000 100644
+--- a/README_centroid_conditioned_ellipse.md
++++ b/README_centroid_conditioned_ellipse.md
+@@ -21,7 +21,6 @@ python train_ellipse.py \
+   --dataset-name sirst3 \
+   --patch-size 32 \
+   --epochs 100 \
+   --batch-size 128 \
+-  --amp \
+   --output-dir runs/sirst3_ellipse
+ ```
