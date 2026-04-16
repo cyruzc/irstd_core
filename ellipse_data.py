@@ -65,24 +65,27 @@ class CentroidConditionedEllipseDataset(Dataset):
         self.records: list[InstanceRecord] = []
         self.cached_images: dict[str, np.ndarray] = {}
         self.cached_masks: dict[str, np.ndarray] = {}
+        self._instance_masks: dict[tuple[str, int], np.ndarray] = {}
 
         for full_record in full_records:
             mask = (load_grayscale(full_record.mask_path) > 0).astype(np.float32)
             for inst in component_instances(mask):
                 if inst["area"] < min_area:
                     continue
+                iid = int(inst["instance_id"])
                 self.records.append(
                     InstanceRecord(
                         name=full_record.name,
                         image_path=full_record.image_path,
                         mask_path=full_record.mask_path,
-                        instance_id=int(inst["instance_id"]),
+                        instance_id=iid,
                         centroid_x=float(inst["centroid_x"]),
                         centroid_y=float(inst["centroid_y"]),
                         area=int(inst["area"]),
                         bbox=tuple(inst["bbox"]),
                     )
                 )
+                self._instance_masks[(full_record.name, iid)] = inst["mask"]
             if cache_data:
                 self.cached_images[full_record.name] = load_grayscale(full_record.image_path)
                 self.cached_masks[full_record.name] = mask
@@ -102,9 +105,8 @@ class CentroidConditionedEllipseDataset(Dataset):
 
     def __getitem__(self, index: int) -> dict[str, torch.Tensor | str]:
         record = self.records[index]
-        image, full_mask = self._load_image_mask(record)
-        components = component_instances(full_mask)
-        component_mask = components[record.instance_id]["mask"]
+        image, _ = self._load_image_mask(record)
+        component_mask = self._instance_masks[(record.name, record.instance_id)]
 
         rng = np.random.default_rng(self._seed + index)
         prompt_x, prompt_y = sample_prompt_center(record.centroid_x, record.centroid_y, self.prompt_noise_std, rng)

@@ -354,14 +354,15 @@ def worker_init_fn(worker_id: int) -> None:
 
 
 __all__ = [
-    "DatasetConfig",
-    "DATASET_REGISTRY",
-    "build_dataset_config",
-    "validate_dataset_config",
     "FullSupervisionDataset",
     "PointSupervisionDataset",
     "random_crop",
     "pad_to_multiple",
     "augment",
     "worker_init_fn",
+    "load_grayscale",
+    "load_split_file",
+    "resolve_full_records",
+    "resolve_point_records",
+    "to_tensor",
 ]

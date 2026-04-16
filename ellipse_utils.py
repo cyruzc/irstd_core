@@ -113,11 +113,7 @@ def fit_ellipse_from_mask(mask: np.ndarray) -> EllipseFit:
 
 
 def normalize_half_pi(phi: float) -> float:
-    while phi < -np.pi / 2.0:
-        phi += np.pi
-    while phi >= np.pi / 2.0:
-        phi -= np.pi
-    return float(phi)
+    return float(((phi + np.pi / 2.0) % np.pi) - np.pi / 2.0)
 
 
 def crop_with_pad(array: np.ndarray, center_x: float, center_y: float, patch_size: int, pad_value: float = 0.0) -> tuple[np.ndarray, CropMeta]:
@@ -209,11 +205,6 @@ def angle_abs_error(pred_phi: float, gt_phi: float) -> float:
     return float(diff)
 
 
-def batch_angle_abs_error(pred_phi: np.ndarray, gt_phi: np.ndarray) -> np.ndarray:
-    vectorized = np.vectorize(angle_abs_error)
-    return vectorized(pred_phi, gt_phi).astype(np.float32)
-
-
 __all__ = [
     "CropMeta",
     "EllipseFit",
@@ -227,5 +218,4 @@ __all__ = [
     "rasterize_ellipse_numpy",
     "sample_prompt_center",
     "angle_abs_error",
-    "batch_angle_abs_error",
 ]

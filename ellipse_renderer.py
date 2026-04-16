@@ -6,11 +6,26 @@ import torch.nn.functional as F
 
 EPS = 1e-6
 
+_grid_cache: dict[tuple[int, str, torch.dtype], tuple[torch.Tensor, torch.Tensor]] = {}
+
+
+def _get_meshgrid(patch_size: int, device: torch.device, dtype: torch.dtype) -> tuple[torch.Tensor, torch.Tensor]:
+    key = (patch_size, str(device), dtype)
+    if key not in _grid_cache:
+        ys, xs = torch.meshgrid(
+            torch.arange(patch_size, device=device, dtype=dtype),
+            torch.arange(patch_size, device=device, dtype=dtype),
+            indexing="ij",
+        )
+        _grid_cache[key] = (ys, xs)
+    return _grid_cache[key]
+
 
 def decode_raw_params(raw: torch.Tensor, patch_size: int, offset_limit: float | None = None, min_axis: float = 0.5) -> dict[str, torch.Tensor]:
     if raw.ndim != 2 or raw.shape[1] != 6:
         raise ValueError("raw must have shape [B, 6].")
-    offset_limit = offset_limit or patch_size / 4.0
+    if offset_limit is None:
+        offset_limit = patch_size / 4.0
     center = (patch_size - 1) / 2.0
 
     dx = torch.tanh(raw[:, 0]) * offset_limit
@@ -36,11 +51,7 @@ def decode_raw_params(raw: torch.Tensor, patch_size: int, offset_limit: float | 
 def render_soft_ellipse(decoded: dict[str, torch.Tensor], patch_size: int, temperature: float = 12.0) -> torch.Tensor:
     device = decoded["cx"].device
     dtype = decoded["cx"].dtype
-    ys, xs = torch.meshgrid(
-        torch.arange(patch_size, device=device, dtype=dtype),
-        torch.arange(patch_size, device=device, dtype=dtype),
-        indexing="ij",
-    )
+    ys, xs = _get_meshgrid(patch_size, device, dtype)
     xs = xs.unsqueeze(0)
     ys = ys.unsqueeze(0)
 
@@ -60,7 +71,7 @@ def render_soft_ellipse(decoded: dict[str, torch.Tensor], patch_size: int, tempe
 
     ellipse_value = (x_rot / (a + EPS)) ** 2 + (y_rot / (b + EPS)) ** 2
     logits = temperature * (1.0 - ellipse_value)
-    return torch.sigmoid(logits).unsqueeze(1)
+    return torch.sigmoid(logits).clamp(EPS, 1.0 - EPS).unsqueeze(1)
 
 
 def raw_to_soft_mask(raw: torch.Tensor, patch_size: int, offset_limit: float | None = None, temperature: float = 12.0) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:

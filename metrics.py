@@ -34,21 +34,27 @@ class FastIoU:
 
     def __init__(self, threshold: float = 0.5) -> None:
         self.threshold = threshold
+        self._device: torch.device | None = None
         self.reset()
 
     def reset(self) -> None:
-        self.total_inter = torch.tensor(0.0)
-        self.total_union = torch.tensor(0.0)
+        device = self._device if self._device is not None else torch.device("cpu")
+        self.total_inter = torch.tensor(0.0, device=device)
+        self.total_union = torch.tensor(0.0, device=device)
         self.sample_ious: list[float] = []
 
     @torch.no_grad()
     def update(self, pred: torch.Tensor, target: torch.Tensor) -> None:
+        if self._device is None:
+            self._device = pred.device
+            self.total_inter = self.total_inter.to(self._device)
+            self.total_union = self.total_union.to(self._device)
         p = (pred > self.threshold).float()
         t = (target > self.threshold).float()
         tp = p * t
         # ---- dataset-level (aggregate) ----
-        self.total_inter = self.total_inter.to(tp.device) + tp.sum()
-        self.total_union = self.total_union.to(tp.device) + p.sum() + t.sum() - tp.sum()
+        self.total_inter = self.total_inter + tp.sum()
+        self.total_union = self.total_union + p.sum() + t.sum() - tp.sum()
         # ---- per-sample (vectorized) ----
         b = pred.shape[0]
         flat_dim = int(p[0].numel())

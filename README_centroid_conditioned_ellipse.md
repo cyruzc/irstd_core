@@ -25,7 +25,6 @@ python train_ellipse.py \
   --patch-size 32 \
   --epochs 100 \
   --batch-size 128 \
-  --amp \
   --output-dir runs/sirst3_ellipse
 ```
 

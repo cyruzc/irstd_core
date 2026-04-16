@@ -7,11 +7,11 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from ellipse_losses import EllipseReconstructionLoss
-from ellipse_renderer import raw_to_soft_mask
 from ellipse_utils import angle_abs_error, CropMeta, paste_patch
 from engine import save_checkpoint, save_json
 from metrics import FastIoU, SegMetrics
+from rde_losses import RadialProfileEllipseLoss
+from rde_renderer import compute_gt_radial_profile, raw_to_soft_rde
 
 
 @torch.no_grad()
@@ -32,7 +32,18 @@ def batch_param_errors(decoded: dict[str, torch.Tensor], gt_params: torch.Tensor
     }
 
 
-def train_one_epoch(model: torch.nn.Module, loader: DataLoader, optimizer: torch.optim.Optimizer, criterion: EllipseReconstructionLoss, device: torch.device, patch_size: int) -> dict[str, float]:
+def train_one_epoch(
+    model: torch.nn.Module,
+    loader: DataLoader,
+    optimizer: torch.optim.Optimizer,
+    criterion: RadialProfileEllipseLoss,
+    device: torch.device,
+    patch_size: int,
+    num_profile_samples: int,
+    temperature: float = 12.0,
+    current_epoch: int = 0,
+    pretrain_base: bool = False,
+) -> dict[str, float]:
     model.train()
     stats_sum: defaultdict[str, float] = defaultdict(float)
     count = 0
@@ -42,8 +53,15 @@ def train_one_epoch(model: torch.nn.Module, loader: DataLoader, optimizer: torch
 
         optimizer.zero_grad(set_to_none=True)
         raw = model(batch["image"].to(device, non_blocking=True), batch["center_hint"].to(device, non_blocking=True))
-        pred_mask, decoded = raw_to_soft_mask(raw, patch_size=patch_size)
-        loss, loss_stats = criterion(pred_mask, gt_mask, decoded, gt_params)
+        pred_mask, decoded = raw_to_soft_rde(raw, patch_size=patch_size, num_profile_samples=num_profile_samples, temperature=temperature)
+
+        # Compute GT radial profile
+        gt_profile = compute_gt_radial_profile(gt_mask, decoded, patch_size, num_profile_samples)
+
+        loss, loss_stats = criterion(
+            pred_mask, gt_mask, decoded, gt_params,
+            gt_profile=gt_profile, current_epoch=current_epoch,
+        )
 
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
@@ -57,7 +75,15 @@ def train_one_epoch(model: torch.nn.Module, loader: DataLoader, optimizer: torch
 
 
 @torch.no_grad()
-def evaluate_instance_level(model: torch.nn.Module, loader: DataLoader, device: torch.device, patch_size: int, threshold: float = 0.5) -> dict[str, float]:
+def evaluate_instance_level(
+    model: torch.nn.Module,
+    loader: DataLoader,
+    device: torch.device,
+    patch_size: int,
+    num_profile_samples: int,
+    temperature: float = 12.0,
+    threshold: float = 0.5,
+) -> dict[str, float]:
     model.eval()
     meter = FastIoU(threshold=threshold)
     aggregated_errors: defaultdict[str, float] = defaultdict(float)
@@ -66,7 +92,7 @@ def evaluate_instance_level(model: torch.nn.Module, loader: DataLoader, device: 
         gt_mask = batch["mask"].to(device, non_blocking=True)
         gt_params = batch["gt_params"].to(device, non_blocking=True)
         raw = model(batch["image"].to(device, non_blocking=True), batch["center_hint"].to(device, non_blocking=True))
-        pred_mask, decoded = raw_to_soft_mask(raw, patch_size=patch_size)
+        pred_mask, decoded = raw_to_soft_rde(raw, patch_size=patch_size, num_profile_samples=num_profile_samples, temperature=temperature)
         meter.update(pred_mask, gt_mask)
         errors = batch_param_errors(decoded, gt_params)
         for key, value in errors.items():
@@ -79,14 +105,23 @@ def evaluate_instance_level(model: torch.nn.Module, loader: DataLoader, device: 
 
 
 @torch.no_grad()
-def evaluate_full_images(model: torch.nn.Module, loader: DataLoader, device: torch.device, patch_size: int, threshold: float = 0.5, distance_thresh: float = 3.0) -> dict[str, float]:
+def evaluate_full_images(
+    model: torch.nn.Module,
+    loader: DataLoader,
+    device: torch.device,
+    patch_size: int,
+    num_profile_samples: int,
+    temperature: float = 12.0,
+    threshold: float = 0.5,
+    distance_thresh: float = 3.0,
+) -> dict[str, float]:
     model.eval()
     pred_canvases: dict[str, np.ndarray] = {}
     gt_canvases: dict[str, np.ndarray] = {}
 
     for batch in loader:
         raw = model(batch["image"].to(device, non_blocking=True), batch["center_hint"].to(device, non_blocking=True))
-        pred_mask, _ = raw_to_soft_mask(raw, patch_size=patch_size)
+        pred_mask, _ = raw_to_soft_rde(raw, patch_size=patch_size, num_profile_samples=num_profile_samples, temperature=temperature)
         pred_np = pred_mask.detach().cpu().numpy()[:, 0]
         gt_np = batch["mask"].detach().cpu().numpy()[:, 0]
         names = batch["name"]

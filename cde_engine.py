@@ -7,8 +7,8 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from ellipse_losses import EllipseReconstructionLoss
-from ellipse_renderer import raw_to_soft_mask
+from cde_losses import CanonicalDeformableEllipseLoss
+from cde_renderer import raw_to_soft_cde
 from ellipse_utils import angle_abs_error, CropMeta, paste_patch
 from engine import save_checkpoint, save_json
 from metrics import FastIoU, SegMetrics
@@ -32,7 +32,20 @@ def batch_param_errors(decoded: dict[str, torch.Tensor], gt_params: torch.Tensor
     }
 
 
-def train_one_epoch(model: torch.nn.Module, loader: DataLoader, optimizer: torch.optim.Optimizer, criterion: EllipseReconstructionLoss, device: torch.device, patch_size: int) -> dict[str, float]:
+def train_one_epoch(
+    model: torch.nn.Module,
+    loader: DataLoader,
+    optimizer: torch.optim.Optimizer,
+    criterion: CanonicalDeformableEllipseLoss,
+    device: torch.device,
+    patch_size: int,
+    num_fourier_terms: int,
+    start_k: int = 3,
+    deform_scale: float = 0.30,
+    temperature: float = 12.0,
+    use_gate: bool = False,
+    current_epoch: int = 0,
+) -> dict[str, float]:
     model.train()
     stats_sum: defaultdict[str, float] = defaultdict(float)
     count = 0
@@ -41,9 +54,20 @@ def train_one_epoch(model: torch.nn.Module, loader: DataLoader, optimizer: torch
         gt_params = batch["gt_params"].to(device, non_blocking=True)
 
         optimizer.zero_grad(set_to_none=True)
-        raw = model(batch["image"].to(device, non_blocking=True), batch["center_hint"].to(device, non_blocking=True))
-        pred_mask, decoded = raw_to_soft_mask(raw, patch_size=patch_size)
-        loss, loss_stats = criterion(pred_mask, gt_mask, decoded, gt_params)
+        raw = model(
+            batch["image"].to(device, non_blocking=True),
+            batch["center_hint"].to(device, non_blocking=True),
+        )
+        pred_mask, decoded = raw_to_soft_cde(
+            raw,
+            patch_size=patch_size,
+            num_fourier_terms=num_fourier_terms,
+            start_k=start_k,
+            deform_scale=deform_scale,
+            temperature=temperature,
+            use_gate=use_gate,
+        )
+        loss, loss_stats = criterion(pred_mask, gt_mask, decoded, gt_params, current_epoch=current_epoch)
 
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
@@ -57,7 +81,18 @@ def train_one_epoch(model: torch.nn.Module, loader: DataLoader, optimizer: torch
 
 
 @torch.no_grad()
-def evaluate_instance_level(model: torch.nn.Module, loader: DataLoader, device: torch.device, patch_size: int, threshold: float = 0.5) -> dict[str, float]:
+def evaluate_instance_level(
+    model: torch.nn.Module,
+    loader: DataLoader,
+    device: torch.device,
+    patch_size: int,
+    num_fourier_terms: int,
+    start_k: int = 3,
+    deform_scale: float = 0.30,
+    temperature: float = 12.0,
+    use_gate: bool = False,
+    threshold: float = 0.5,
+) -> dict[str, float]:
     model.eval()
     meter = FastIoU(threshold=threshold)
     aggregated_errors: defaultdict[str, float] = defaultdict(float)
@@ -65,8 +100,19 @@ def evaluate_instance_level(model: torch.nn.Module, loader: DataLoader, device: 
     for batch in loader:
         gt_mask = batch["mask"].to(device, non_blocking=True)
         gt_params = batch["gt_params"].to(device, non_blocking=True)
-        raw = model(batch["image"].to(device, non_blocking=True), batch["center_hint"].to(device, non_blocking=True))
-        pred_mask, decoded = raw_to_soft_mask(raw, patch_size=patch_size)
+        raw = model(
+            batch["image"].to(device, non_blocking=True),
+            batch["center_hint"].to(device, non_blocking=True),
+        )
+        pred_mask, decoded = raw_to_soft_cde(
+            raw,
+            patch_size=patch_size,
+            num_fourier_terms=num_fourier_terms,
+            start_k=start_k,
+            deform_scale=deform_scale,
+            temperature=temperature,
+            use_gate=use_gate,
+        )
         meter.update(pred_mask, gt_mask)
         errors = batch_param_errors(decoded, gt_params)
         for key, value in errors.items():
@@ -79,14 +125,37 @@ def evaluate_instance_level(model: torch.nn.Module, loader: DataLoader, device: 
 
 
 @torch.no_grad()
-def evaluate_full_images(model: torch.nn.Module, loader: DataLoader, device: torch.device, patch_size: int, threshold: float = 0.5, distance_thresh: float = 3.0) -> dict[str, float]:
+def evaluate_full_images(
+    model: torch.nn.Module,
+    loader: DataLoader,
+    device: torch.device,
+    patch_size: int,
+    num_fourier_terms: int,
+    start_k: int = 3,
+    deform_scale: float = 0.30,
+    temperature: float = 12.0,
+    use_gate: bool = False,
+    threshold: float = 0.5,
+    distance_thresh: float = 3.0,
+) -> dict[str, float]:
     model.eval()
     pred_canvases: dict[str, np.ndarray] = {}
     gt_canvases: dict[str, np.ndarray] = {}
 
     for batch in loader:
-        raw = model(batch["image"].to(device, non_blocking=True), batch["center_hint"].to(device, non_blocking=True))
-        pred_mask, _ = raw_to_soft_mask(raw, patch_size=patch_size)
+        raw = model(
+            batch["image"].to(device, non_blocking=True),
+            batch["center_hint"].to(device, non_blocking=True),
+        )
+        pred_mask, _ = raw_to_soft_cde(
+            raw,
+            patch_size=patch_size,
+            num_fourier_terms=num_fourier_terms,
+            start_k=start_k,
+            deform_scale=deform_scale,
+            temperature=temperature,
+            use_gate=use_gate,
+        )
         pred_np = pred_mask.detach().cpu().numpy()[:, 0]
         gt_np = batch["mask"].detach().cpu().numpy()[:, 0]
         names = batch["name"]
@@ -120,7 +189,15 @@ def evaluate_full_images(model: torch.nn.Module, loader: DataLoader, device: tor
     return metric.get()
 
 
-def maybe_save_best(checkpoint_dir: Path, model: torch.nn.Module, optimizer: torch.optim.Optimizer, epoch: int, metrics: dict[str, float], best_score: float, score_key: str = "IoU") -> float:
+def maybe_save_best(
+    checkpoint_dir: Path,
+    model: torch.nn.Module,
+    optimizer: torch.optim.Optimizer,
+    epoch: int,
+    metrics: dict[str, float],
+    best_score: float,
+    score_key: str = "IoU",
+) -> float:
     score = float(metrics.get(score_key, 0.0))
     save_checkpoint(checkpoint_dir / "last.pt", model=model, epoch=epoch, metrics=metrics, optimizer=optimizer)
     save_json(checkpoint_dir / "last_metrics.json", metrics)
