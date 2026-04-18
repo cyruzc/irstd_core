@@ -1,0 +1,21 @@
+{
+  "epoch": 76,
+  "full_FA": 0.0,
+  "full_IoU": 0.677860677242279,
+  "full_PD": 0.9999999999996416,
+  "full_nIoU": 0.6564118478101554,
+  "instance_IoU": 0.6776832342147827,
+  "instance_mae_a": 0.5532967845598856,
+  "instance_mae_b": 0.4021544059117635,
+  "instance_mae_dx": 0.394025315841039,
+  "instance_mae_dy": 0.35452492038408917,
+  "instance_mae_phi": 0.3036526939154964,
+  "instance_nIoU": 0.6543846363502164,
+  "lr": 0.0002710313725785888,
+  "train_loss_bce": 0.0570771267844571,
+  "train_loss_dice": 0.17632944716347587,
+  "train_loss_iou": 0.29174938466813827,
+  "train_loss_moment": 1.2177892989582486,
+  "train_loss_param": 0.3739965723620521,
+  "train_loss_total": 0.8945638603634305
+}

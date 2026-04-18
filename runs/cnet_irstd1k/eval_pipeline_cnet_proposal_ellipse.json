@@ -1,0 +1,12 @@
+{
+  "full_FA": 6.371113791394589e-05,
+  "full_IoU": 0.5172582268714905,
+  "full_PD": 0.9427609427606254,
+  "full_nIoU": 0.5685772882468665,
+  "instance_IoU": 0.6190114617347717,
+  "instance_nIoU": 0.6094771649701025,
+  "mode": "full",
+  "num_instances": 297,
+  "total_post_filter": 365,
+  "total_proposals": 365
+}

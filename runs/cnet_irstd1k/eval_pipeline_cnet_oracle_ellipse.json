@@ -1,0 +1,12 @@
+{
+  "full_FA": 1.6131804357120647e-06,
+  "full_IoU": 0.7394095659255981,
+  "full_PD": 0.9225589225586119,
+  "full_nIoU": 0.7881286464149679,
+  "instance_IoU": 0.747122049331665,
+  "instance_nIoU": 0.7685392725999508,
+  "mode": "oracle_ellipse",
+  "num_instances": 297,
+  "total_post_filter": 365,
+  "total_proposals": 365
+}

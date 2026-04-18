@@ -1,0 +1,483 @@
+{
+  "config": {
+    "checkpoint_config": {
+      "base_channels": 32,
+      "batch_size": 16,
+      "cache_data": true,
+      "dataset_name": "irstd1k",
+      "dataset_root": null,
+      "device": "cuda",
+      "distance_thresh": 3.0,
+      "epochs": 100,
+      "gaussian_sigma": 2.0,
+      "lr": 0.00025,
+      "max_candidates": 16,
+      "min_lr": 1e-06,
+      "nms_kernel": 7,
+      "num_workers": 4,
+      "output_dir": "runs/cnet_irstd1k",
+      "over_count_weight": 1.0,
+      "patch_size": 256,
+      "peak_ranking_margin": 0.15,
+      "peak_ranking_weight": 0.2,
+      "redundancy_radius": 6.0,
+      "ring_inner_radius": 2,
+      "ring_outer_radius": 6,
+      "score_threshold": 0.25,
+      "seed": 42,
+      "test_split": null,
+      "threshold_search_start": 0.1,
+      "threshold_search_step": 0.02,
+      "threshold_search_stop": 0.8,
+      "train_split": null,
+      "under_count_weight": 0.25,
+      "vote_radius": 5,
+      "weight_decay": 0.0001
+    },
+    "cnet_checkpoint": "runs/cnet_irstd1k/best.pt",
+    "dataset_name": "irstd1k",
+    "match_radius": 3.0,
+    "split": "img_idx/test_IRSTD-1K.txt",
+    "use_test_dirs": true
+  },
+  "dx_distribution": {
+    "count": 366.0,
+    "max": 353.0,
+    "mean": -2.080784559249878,
+    "median": -0.07940252125263214,
+    "p90": 48.5349006652832,
+    "p95": 146.05535888671875
+  },
+  "dy_distribution": {
+    "count": 366.0,
+    "max": 383.4590148925781,
+    "mean": 11.000072479248047,
+    "median": 0.10000000149011612,
+    "p90": 84.60746002197266,
+    "p95": 201.21926879882812
+  },
+  "gt_best_distance_to_any_proposal": {
+    "count": 286.0,
+    "max": 373.0003356933594,
+    "mean": 4.6466169357299805,
+    "median": 0.6623397469520569,
+    "p90": 1.3531010150909424,
+    "p95": 1.7439827919006348
+  },
+  "matched_distance_buckets": {
+    "0.5-1": 115,
+    "1-2": 60,
+    "2-3": 4,
+    "<=0.5": 100
+  },
+  "matched_proposal_count_per_image": {
+    "count": 201.0,
+    "max": 8.0,
+    "mean": 1.3880597352981567,
+    "median": 1.0,
+    "p90": 2.0,
+    "p95": 3.0
+  },
+  "matched_proposal_distance": {
+    "count": 279.0,
+    "max": 2.632878303527832,
+    "mean": 0.7158929705619812,
+    "median": 0.6566872596740723,
+    "p90": 1.2556369304656982,
+    "p95": 1.500514030456543
+  },
+  "per_image_samples_head": [
+    {
+      "name": "XDU189",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU935",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 3
+    },
+    {
+      "name": "XDU672",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 3
+    },
+    {
+      "name": "XDU231",
+      "num_gt": 3,
+      "num_matched_gt": 3,
+      "num_matched_proposals": 3,
+      "num_proposals": 3
+    },
+    {
+      "name": "XDU818",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU888",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU146",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU48",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU492",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU241",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU195",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU801",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU104",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU637",
+      "num_gt": 3,
+      "num_matched_gt": 3,
+      "num_matched_proposals": 3,
+      "num_proposals": 4
+    },
+    {
+      "name": "XDU996",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 7
+    },
+    {
+      "name": "XDU482",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU406",
+      "num_gt": 3,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU889",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU558",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU117",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU777",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU134",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU223",
+      "num_gt": 3,
+      "num_matched_gt": 3,
+      "num_matched_proposals": 3,
+      "num_proposals": 3
+    },
+    {
+      "name": "XDU943",
+      "num_gt": 2,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU762",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU662",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU54",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU685",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU167",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU489",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU505",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU527",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU817",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU253",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU193",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU597",
+      "num_gt": 3,
+      "num_matched_gt": 3,
+      "num_matched_proposals": 3,
+      "num_proposals": 3
+    },
+    {
+      "name": "XDU151",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU404",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 3
+    },
+    {
+      "name": "XDU596",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 3
+    },
+    {
+      "name": "XDU97",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU321",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU279",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU93",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU205",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    },
+    {
+      "name": "XDU9",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 3
+    },
+    {
+      "name": "XDU219",
+      "num_gt": 4,
+      "num_matched_gt": 4,
+      "num_matched_proposals": 4,
+      "num_proposals": 4
+    },
+    {
+      "name": "XDU674",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU501",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU316",
+      "num_gt": 2,
+      "num_matched_gt": 2,
+      "num_matched_proposals": 2,
+      "num_proposals": 2
+    },
+    {
+      "name": "XDU343",
+      "num_gt": 1,
+      "num_matched_gt": 1,
+      "num_matched_proposals": 1,
+      "num_proposals": 1
+    }
+  ],
+  "proposal_count_per_image": {
+    "count": 201.0,
+    "max": 8.0,
+    "mean": 1.8208955526351929,
+    "median": 2.0,
+    "p90": 3.0,
+    "p95": 4.0
+  },
+  "proposal_distance_to_nearest_gt": {
+    "count": 366.0,
+    "max": 436.1820068359375,
+    "mean": 52.80531692504883,
+    "median": 0.8003451824188232,
+    "p90": 241.6638946533203,
+    "p95": 316.18902587890625
+  },
+  "proposal_score_matched": {
+    "count": 279.0,
+    "max": 0.9999998807907104,
+    "mean": 0.919190526008606,
+    "median": 0.9998266100883484,
+    "p90": 0.9999873042106628,
+    "p95": 0.9999913573265076
+  },
+  "proposal_score_unmatched": {
+    "count": 87.0,
+    "max": 0.9999819993972778,
+    "mean": 0.741047203540802,
+    "median": 0.7724834084510803,
+    "p90": 0.999862551689148,
+    "p95": 0.9999721050262451
+  },
+  "summary": {
+    "gt_recall_at_radius": 0.9393939393939394,
+    "num_images": 201,
+    "proposal_precision_at_radius": 0.7622950819672131,
+    "total_gt": 297,
+    "total_matched_gt": 279,
+    "total_matched_proposals": 279,
+    "total_proposals": 366,
+    "total_unmatched_proposals": 87
+  }
+}

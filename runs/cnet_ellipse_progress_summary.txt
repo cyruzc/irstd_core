@@ -1,0 +1,474 @@
+CNet + Ellipse 当前进度归纳
+更新时间：2026-04-18
+范围说明：本文件只归纳当前一阶段 CNet + 二阶段 Ellipse 主线，不纳入 CDE 作为论文主叙事的一部分。
+
+==================================================
+一、当前主线定义
+==================================================
+
+当前计划中的完整系统是：
+Image -> CNet -> High-quality candidate centers -> Ellipse reconstructor -> Final masks
+
+其中：
+1. 一阶段 CNet 负责从整图形成高质量、低冗余的候选中心集合。
+2. 二阶段 Ellipse 负责在给定候选中心条件下恢复目标的参数化支撑域。
+
+本文件的所有结论都围绕这个两阶段系统组织。
+
+==================================================
+二、已验证结论
+==================================================
+
+结论 1：Ellipse 重建本身是成立的，给定正确或近似正确中心后，可以稳定恢复目标支撑域。
+
+数据支持：
+1. IRSTD-1K 上 ellipse 假设的解析上界为：
+   文件：runs/irstd1k_ellipse_upperbound.json
+   full_IoU = 0.7848612666
+   full_nIoU = 0.8216623777
+   instance_IoU = 0.7848612666
+   instance_nIoU = 0.8288240735
+   说明：单椭圆对 GT 连通域的拟合上界并不低，说明“参数化椭圆支撑域”不是一个明显错误的形状假设。
+
+2. 在 oracle centroid 条件下训练的 ellipse 网络结果为：
+   文件：runs/irstd1k_ellipse_oracle/best_metrics.json
+   full_IoU = 0.6697728634
+   full_nIoU = 0.6573068958
+   full_PD = 0.9797979798
+   instance_IoU = 0.6689550877
+   instance_nIoU = 0.6519086389
+   instance_mae_dx = 0.2198666632
+   instance_mae_dy = 0.2039234291
+   说明：在给定中心条件下，Ellipse 网络已经能比较稳定地把局部 patch 重建成目标区域。
+
+3. oracle ellipse 替换实验进一步说明后端支撑域恢复并不是主瓶颈：
+   文件：runs/irstd1k_pipeline_oracle_ellipse.json
+   full_IoU = 0.7955774069
+   full_nIoU = 0.8072672776
+   full_PD = 0.9461279461
+   full_FA = 2.5089700424e-05
+   说明：一旦候选点足够靠谱，后端几何重建可以把整图指标推到明显更高水平。
+
+
+结论 2：当前系统的主要瓶颈不在 Ellipse，而在候选中心质量。
+
+数据支持：
+1. 原始全流程结果较差：
+   文件：runs/irstd1k_pipeline_full.json
+   full_IoU = 0.2232598811
+   full_nIoU = 0.3168507452
+   full_PD = 0.9595959596
+   full_FA = 6.7506856586e-04
+
+2. 同样的前端 proposal，换成 oracle ellipse 后：
+   文件：runs/irstd1k_pipeline_oracle_ellipse.json
+   full_IoU = 0.7955774069
+   full_nIoU = 0.8072672776
+   full_PD = 0.9461279461
+   full_FA = 2.5089700424e-05
+
+3. full pipeline 与 oracle ellipse 的 full_IoU 差值为：
+   0.7955774069 - 0.2232598811 = 0.5723175258
+   说明：整条系统的性能坍塌主要不是因为 ellipse 表达不够，而是因为错误 proposal 过多，把后端拖垮了。
+
+
+结论 3：原始 point detector 是高召回、低精度的候选源，足以作为“候选形成问题”的起点，但不足以直接承担系统前端。
+
+数据支持：
+1. point detector 最优结果：
+   文件：runs/irstd1k_point_detector/best_metrics.json
+   PD = 0.9764309764
+   precision = 0.1428571429
+   total_detected = 2030
+   total_gt = 297
+   total_matched = 290
+   mean_distance_error = 0.7198690614
+
+2. proposal 统计：
+   文件：runs/proposals_irstd1k_test.json
+   total_images = 201
+   total_proposals = 1258
+   positive = 289
+   negative = 966
+   ignored = 3
+   正样本占比约为 289 / 1258 = 0.2297
+   负样本占比约为 966 / 1258 = 0.7679
+
+3. 解释：
+   point detector 几乎把点找全了，但候选冗余和误报非常严重。
+   这说明“从点监督直接到最终区域”不稳，但“从点监督先形成高质量中心集合”是一个真实存在的问题空间。
+
+
+结论 4：CNet 方向已经显著优于旧的 point->filter 路线，证明“candidate formation”是有效的主线升级。
+
+数据支持：
+1. CNet 全流程结果：
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet.json
+   full_IoU = 0.5313231945
+   full_nIoU = 0.5537737145
+   full_PD = 0.9292929293
+   full_FA = 4.7446483403e-05
+   total_proposals = 344
+   total_post_filter = 344
+
+2. 与旧 baseline 全流程比较：
+   文件：runs/irstd1k_pipeline_full.json
+   baseline full_IoU = 0.2232598811
+   CNet full_IoU = 0.5313231945
+   提升 = +0.3080633134
+
+3. proposal 数量比较：
+   baseline proposal 量：
+   文件：runs/v0_sweep/baseline.json
+   total_proposals = 1106
+
+   CNet proposal 量：
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet.json
+   total_proposals = 344
+
+   proposal 数下降约为：
+   1 - 344 / 1106 = 0.68897
+   即减少约 68.9%
+
+4. 同时 full_FA 从：
+   baseline 6.7506856586e-04
+   降到 CNet 4.7446483403e-05
+   约下降 14.23 倍
+
+5. 解释：
+   CNet 不只是“筛掉一些 proposal”，而是在前端直接把 dense 响应压缩成更稀疏、更干净的候选中心集。
+
+
+结论 5：CNet 给出的正确候选中心已经相当准确，当前剩余问题不再只是“前端候选不够好”。
+
+数据支持：
+1. CNet + oracle ellipse：
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet_oracle_ellipse.json
+   full_IoU = 0.7394095659
+   instance_IoU = 0.7471220493
+   full_PD = 0.9225589226
+
+2. CNet proposal 误差分析：
+   文件：runs/cnet_irstd1k/candidate_error_analysis_test.json
+   matched proposal distance mean = 0.7158930
+   matched proposal distance median = 0.6566873
+   matched proposal distance p90 = 1.2556369
+   gt_recall_at_radius = 0.9393939
+
+3. 解释：
+   在 3 像素匹配半径内，CNet 对正确目标的 proposal 已经足够准。
+   因此当前系统剩余 gap 不能再简单归因于“CNet 候选太差”，而要考虑二阶段与 proposal 分布之间的接口问题。
+
+
+结论 6：proposal-conditioned ellipse 训练显著改善了 matched proposal patch 上的重建质量，验证了 distribution mismatch 的存在。
+
+数据支持：
+1. proposal-conditioned ellipse 最优结果：
+   文件：runs/irstd1k_ellipse_cnet_matched_nw0/best_metrics.json
+   full_IoU = 0.6778606772
+   instance_IoU = 0.6776832342
+   full_PD = 1.0000000000
+
+2. oracle point / noisy-oracle 训练的 ellipse：
+   文件：runs/irstd1k_ellipse_oracle/best_metrics.json
+   full_IoU = 0.6697728634
+   instance_IoU = 0.6689550877
+
+3. 解释：
+   在 matched proposal patch 上重新训练二阶段后，局部重建性能提升并接近甚至略高于 oracle point 训练的 ellipse。
+   这说明原始二阶段确实存在明显的 proposal-distribution mismatch。
+
+
+结论 7：proposal-conditioned ellipse 的 patch-level 提升没有自动转化为更好的整图结果，说明二阶段还缺少 proposal-level decision 能力。
+
+数据支持：
+1. 原始 CNet + ellipse：
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet.json
+   full_IoU = 0.5313231945
+   instance_IoU = 0.5989550352
+   full_PD = 0.9292929293
+   full_FA = 4.7446483403e-05
+
+2. CNet + proposal-conditioned ellipse：
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet_proposal_ellipse.json
+   full_IoU = 0.5172582269
+   instance_IoU = 0.6190114617
+   full_PD = 0.9427609428
+   full_FA = 6.3711137914e-05
+
+3. 解释：
+   新二阶段确实改善了 proposal patch 的 instance 重建，但整图 paste 后 full_IoU 没涨反跌。
+   因此，系统当前缺的不是“更强的局部重建”本身，而是“这个 proposal 是否应该被展开”的 decision 能力。
+
+==================================================
+三、已否掉或基本否掉的方向
+==================================================
+
+方向 1：仅靠简单后处理规则，无法把 point detector proposal 变成足够好的系统前端。
+
+数据支持：
+1. baseline：
+   文件：runs/v0_sweep/baseline.json
+   full_IoU = 0.2232598811
+
+2. 单纯提高 score threshold：
+   文件：runs/v0_sweep/score_0.9.json
+   full_IoU = 0.3083474338
+   提升有限，且仍远低于可用水平。
+
+3. 单纯限制 top-k：
+   文件：runs/v0_sweep/topk_3.json
+   full_IoU = 0.3762661815
+   full_PD = 0.8451178451
+   说明：虽然误报下降，但召回损失明显，不能作为最终方案。
+
+4. 结论：
+   score、top-k、contrast、area/aspect 这类规则只能小修小补，不能从根本上解决 proposal 质量问题。
+
+
+方向 2：如果存在一个强 proposal verifier，系统上限会明显提高；但这也说明纯规则不是解法。
+
+数据支持：
+1. oracle verifier：
+   文件：runs/v0_sweep/oracle_verifier_5.json
+   full_IoU = 0.6190779805
+   full_nIoU = 0.6285028811
+   full_PD = 0.9629629630
+   full_FA = 9.2046177802e-06
+
+2. 与 baseline 比较：
+   baseline full_IoU = 0.2232598811
+   oracle verifier full_IoU = 0.6190779805
+   提升 = +0.3958180994
+
+3. 结论：
+   proposal 质量一旦改善，后端系统性能会大幅提升。
+   反过来也说明，系统真正缺的是 learned candidate formation / learned proposal validation，而不是更多手工规则。
+
+
+方向 3：第一版 verifier 路线已经基本否掉，因为它会过度筛除候选，导致 PD 崩塌。
+
+数据支持：
+1. baseline_pt03：
+   文件：runs/v1_sweep/baseline_pt03.json
+   full_IoU = 0.1971302181
+   full_PD = 0.9595959596
+   total_proposals = 1258
+
+2. verifier_0.5：
+   文件：runs/v1_sweep/verifier_0.5.json
+   full_IoU = 0.1688883305
+   full_PD = 0.0707070707
+   total_post_filter = 38
+
+3. verifier_0.8：
+   文件：runs/v1_sweep/verifier_0.8.json
+   full_IoU = 0.0803547278
+   full_PD = 0.0303030303
+   total_post_filter = 9
+
+4. 结论：
+   第一版 verifier 明显学成了“过严拒绝器”，不是适合作为主线的方案。
+
+
+方向 4：ROI scorer 和改进版 verifier 虽然有效，但仍然更像过渡性修补，而不是最终结构性解法。
+
+数据支持：
+1. ROI scorer 最好结果：
+   文件：runs/v1_sweep_roi/roi_0.5.json
+   full_IoU = 0.4904805124
+   full_PD = 0.8619528620
+   full_FA = 4.5795345781e-05
+
+2. verifier v2 最好结果之一：
+   文件：runs/v1_sweep_v2/verifier_0.6.json
+   full_IoU = 0.5000820756
+   full_PD = 0.8518518519
+   full_FA = 3.3326409942e-05
+
+3. verifier v3 focal 最好结果之一：
+   文件：runs/v1_sweep_v3_focal/verifier_0.5.json
+   full_IoU = 0.5113568306
+   full_PD = 0.9158249158
+   full_FA = 6.7848471267e-05
+
+4. 对比 CNet：
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet.json
+   full_IoU = 0.5313231945
+   full_PD = 0.9292929293
+   full_FA = 4.7446483403e-05
+
+5. 结论：
+   learned proposal filtering 是有效方向，但结构上仍然是“旧 proposal 生成器 + 后验打分器”。
+   当前数据上，CNet 这种前端直接 candidate formation 的方式更自然，也略优于这些修补式方案。
+
+==================================================
+四、当前瓶颈
+==================================================
+
+瓶颈 1：当前最核心的瓶颈已经从“候选形成”转移到了“二阶段接口与整图决策”。
+
+数据支持：
+1. CNet + oracle ellipse：
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet_oracle_ellipse.json
+   full_IoU = 0.7394095659
+
+2. CNet + 原始 learned ellipse：
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet.json
+   full_IoU = 0.5313231945
+
+3. CNet + proposal-conditioned ellipse：
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet_proposal_ellipse.json
+   full_IoU = 0.5172582269
+
+4. 解释：
+   如果 CNet 候选本身仍是主要瓶颈，那么 proposal-conditioned ellipse 不会在 matched patch 上显著提升。
+   但现有结果表明，CNet + oracle ellipse 已经到 0.7394，而不同二阶段训练方式会显著改变 matched patch 表现和最终整图表现。
+   因此当前最核心的问题已经变成二阶段如何适配并决策 proposal，而不是继续单独把 CNet 做得更强。
+
+
+瓶颈 2：二阶段当前只有 reconstruction，没有显式 proposal-level decision。
+
+数据支持：
+1. proposal-conditioned ellipse 在 matched patch 上更强：
+   文件：runs/irstd1k_ellipse_cnet_matched_nw0/best_metrics.json
+   instance_IoU = 0.6776832342
+
+2. 但整图 end-to-end 没有提升：
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet_proposal_ellipse.json
+   full_IoU = 0.5172582269
+
+3. 对比旧版 end-to-end：
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet.json
+   full_IoU = 0.5313231945
+
+4. 解释：
+   当前二阶段会对所有 proposal 一律展开，再 paste 回整图。
+   它学会了“如何重建”，但没有学会“何时拒绝展开”，这就是为什么 instance 指标改善而 full-image 指标没有同步改善。
+
+
+瓶颈 3：proposal-conditioned ellipse 还存在真实的局部重建 gap，但这已经不是唯一问题。
+
+数据支持：
+1. CNet + oracle ellipse：
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet_oracle_ellipse.json
+   instance_IoU = 0.7471220493
+
+2. proposal-conditioned ellipse：
+   文件：runs/irstd1k_ellipse_cnet_matched_nw0/best_metrics.json
+   instance_IoU = 0.6776832342
+
+3. gap：
+   0.7471220493 - 0.6776832342 = 0.0694388151
+
+4. 解释：
+   proposal-conditioned 训练已经显著缩小了原来的接口失配问题，但局部几何重建本身仍然离 oracle ellipse 有约 0.07 的 instance_IoU gap。
+   因此后续最合理的方向不是回退到纯 oracle prompt 训练，而是在 proposal-conditioned setting 下继续补上 decision / rejection 能力。
+
+==================================================
+五、现阶段最稳的论文叙事线
+==================================================
+
+建议的核心叙事：
+
+1. 问题提出
+   单点监督 IRSTD 的难点不只是“从点到区域”，而是“如何从整图中形成可信、低冗余的候选中心集合”。
+
+2. 现象证据
+   普通 point detector 具有很高召回，但候选冗余严重，不能直接驱动稳定的区域重建系统。
+   数据：
+   文件：runs/irstd1k_point_detector/best_metrics.json
+   PD = 0.9764, precision = 0.1429
+
+3. 重建可行性证据
+   给定近似正确中心后，Ellipse 已经可以稳定恢复目标支撑域。
+   数据：
+   文件：runs/irstd1k_ellipse_oracle/best_metrics.json
+   full_IoU = 0.6698
+   文件：runs/irstd1k_ellipse_upperbound.json
+   full_IoU upper bound = 0.7849
+
+4. 系统瓶颈证据
+   在旧 point proposal 阶段，前端候选质量是主瓶颈；但在 CNet 阶段，主瓶颈已经转移到二阶段接口与决策。
+   数据：
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet.json
+   full_IoU = 0.5313
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet_oracle_ellipse.json
+   full_IoU = 0.7394
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet_proposal_ellipse.json
+   full_IoU = 0.5173
+
+5. 方法动机
+   因此，将任务拆解为：
+   point supervision -> candidate formation -> support reconstruction
+   比“直接从点逼近整片区域”更稳定。
+
+6. 方法实现
+   一阶段使用 CNet 直接从整图形成稀疏高质量候选中心；
+   二阶段使用 Ellipse 对每个候选做参数化支撑域重建。
+
+7. 方法有效性
+   CNet 相比旧 point->filter 路线显著改善整链条表现；进一步实验表明二阶段必须适配 CNet proposal 分布，并最终需要具备 proposal-level decision 能力。
+   数据：
+   baseline full_IoU = 0.2233
+   CNet full_IoU = 0.5313
+   CNet + oracle ellipse full_IoU = 0.7394
+   proposal-conditioned ellipse patch full_IoU = 0.6779
+   CNet + proposal-conditioned ellipse full_IoU = 0.5173
+
+8. 论文主旨可压缩为一句话
+   在单点监督 IRSTD 中，与其直接从点监督逼近目标区域，不如先学习一个 candidate formation network 形成高质量、低冗余中心集合，再以这些中心为条件恢复目标的参数化椭圆支撑域；而二阶段需要同时解决“是否展开 proposal”的决策问题与“如何重建支撑域”的几何问题。
+
+==================================================
+六、当前最适合在文中强调的数字
+==================================================
+
+建议优先反复使用下面这些数字：
+
+1. Point detector:
+   PD = 0.9764, precision = 0.1429
+   文件：runs/irstd1k_point_detector/best_metrics.json
+
+2. Proposal 噪声：
+   1258 test proposals，其中 positive = 289, negative = 966
+   文件：runs/proposals_irstd1k_test.json
+
+3. Ellipse oracle：
+   full_IoU = 0.6698
+   文件：runs/irstd1k_ellipse_oracle/best_metrics.json
+
+4. Ellipse upper bound：
+   full_IoU = 0.7849
+   文件：runs/irstd1k_ellipse_upperbound.json
+
+5. 原始全流程：
+   full_IoU = 0.2233
+   文件：runs/irstd1k_pipeline_full.json
+
+6. Oracle ellipse 全流程：
+   full_IoU = 0.7956
+   文件：runs/irstd1k_pipeline_oracle_ellipse.json
+
+7. CNet 全流程：
+   full_IoU = 0.5313, full_FA = 4.74e-05, total_proposals = 344
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet.json
+
+8. CNet + oracle ellipse：
+   full_IoU = 0.7394
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet_oracle_ellipse.json
+
+9. proposal-conditioned ellipse patch 结果：
+   full_IoU = 0.6779
+   文件：runs/irstd1k_ellipse_cnet_matched_nw0/best_metrics.json
+
+10. CNet + proposal-conditioned ellipse 整链结果：
+   full_IoU = 0.5173
+   文件：runs/cnet_irstd1k/eval_pipeline_cnet_proposal_ellipse.json
+
+==================================================
+七、当前工作结论
+==================================================
+
+用一句话总结当前阶段：
+
+你已经把“先由 CNet 形成高质量候选中心，再由二阶段做条件几何重建”这条主线验证清楚了；当前最关键的新发现是，二阶段的主要问题已经不再是纯几何拟合能力，而是 proposal-conditioned 接口失配以及缺少 proposal-level decision / rejection 能力。

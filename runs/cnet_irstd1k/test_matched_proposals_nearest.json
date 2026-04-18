@@ -1,0 +1,5359 @@
+{
+  "config": {
+    "checkpoint_config": {
+      "base_channels": 32,
+      "batch_size": 16,
+      "cache_data": true,
+      "dataset_name": "irstd1k",
+      "dataset_root": null,
+      "device": "cuda",
+      "distance_thresh": 3.0,
+      "epochs": 100,
+      "gaussian_sigma": 2.0,
+      "lr": 0.00025,
+      "max_candidates": 16,
+      "min_lr": 1e-06,
+      "nms_kernel": 7,
+      "num_workers": 4,
+      "output_dir": "runs/cnet_irstd1k",
+      "over_count_weight": 1.0,
+      "patch_size": 256,
+      "peak_ranking_margin": 0.15,
+      "peak_ranking_weight": 0.2,
+      "redundancy_radius": 6.0,
+      "ring_inner_radius": 2,
+      "ring_outer_radius": 6,
+      "score_threshold": 0.25,
+      "seed": 42,
+      "test_split": null,
+      "threshold_search_start": 0.1,
+      "threshold_search_step": 0.02,
+      "threshold_search_stop": 0.8,
+      "train_split": null,
+      "under_count_weight": 0.25,
+      "vote_radius": 5,
+      "weight_decay": 0.0001
+    },
+    "cnet_checkpoint": "runs/cnet_irstd1k/best.pt",
+    "dataset_name": "irstd1k",
+    "match_radius": 3.0,
+    "selection": "nearest",
+    "split": "img_idx/test_IRSTD-1K.txt",
+    "use_test_dirs": true
+  },
+  "entries": [
+    {
+      "area": 17,
+      "bbox": [
+        252,
+        343,
+        256,
+        348
+      ],
+      "distance_to_gt": 0.6576670522058324,
+      "gt_x": 345.29411764705884,
+      "gt_y": 253.41176470588235,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU10.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU10.png",
+      "name": "XDU10",
+      "prompt_x": 345.0,
+      "prompt_y": 254.0,
+      "score": 0.9999302625656128
+    },
+    {
+      "area": 143,
+      "bbox": [
+        200,
+        281,
+        211,
+        300
+      ],
+      "distance_to_gt": 1.0113783687148985,
+      "gt_x": 290.5034965034965,
+      "gt_y": 205.11888111888112,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU103.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU103.png",
+      "name": "XDU103",
+      "prompt_x": 291.0,
+      "prompt_y": 206.0,
+      "score": 0.9958263039588928
+    },
+    {
+      "area": 18,
+      "bbox": [
+        55,
+        323,
+        61,
+        331
+      ],
+      "distance_to_gt": 0.17568209223157039,
+      "gt_x": 326.05555555555554,
+      "gt_y": 57.166666666666664,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU104.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU104.png",
+      "name": "XDU104",
+      "prompt_x": 326.0,
+      "prompt_y": 57.0,
+      "score": 0.9999419450759888
+    },
+    {
+      "area": 38,
+      "bbox": [
+        89,
+        175,
+        98,
+        181
+      ],
+      "distance_to_gt": 0.6137844099837017,
+      "gt_x": 177.52631578947367,
+      "gt_y": 93.3157894736842,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU108.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU108.png",
+      "name": "XDU108",
+      "prompt_x": 177.0,
+      "prompt_y": 93.0,
+      "score": 0.9971736669540405
+    },
+    {
+      "area": 183,
+      "bbox": [
+        76,
+        338,
+        90,
+        360
+      ],
+      "distance_to_gt": 1.2476500051696042,
+      "gt_x": 348.94535519125685,
+      "gt_y": 83.18579234972678,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU110.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU110.png",
+      "name": "XDU110",
+      "prompt_x": 348.0,
+      "prompt_y": 84.0,
+      "score": 0.999461829662323
+    },
+    {
+      "area": 9,
+      "bbox": [
+        184,
+        349,
+        187,
+        352
+      ],
+      "distance_to_gt": 0.0,
+      "gt_x": 350.0,
+      "gt_y": 185.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU111.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU111.png",
+      "name": "XDU111",
+      "prompt_x": 350.0,
+      "prompt_y": 185.0,
+      "score": 0.9999849796295166
+    },
+    {
+      "area": 13,
+      "bbox": [
+        5,
+        294,
+        9,
+        298
+      ],
+      "distance_to_gt": 0.9850960365281337,
+      "gt_x": 295.2307692307692,
+      "gt_y": 6.384615384615385,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU115.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU115.png",
+      "name": "XDU115",
+      "prompt_x": 296.0,
+      "prompt_y": 7.0,
+      "score": 0.9999772310256958
+    },
+    {
+      "area": 64,
+      "bbox": [
+        258,
+        320,
+        268,
+        329
+      ],
+      "distance_to_gt": 0.9233304189183849,
+      "gt_x": 323.84375,
+      "gt_y": 262.625,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU117.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU117.png",
+      "name": "XDU117",
+      "prompt_x": 323.0,
+      "prompt_y": 263.0,
+      "score": 0.9999758005142212
+    },
+    {
+      "area": 36,
+      "bbox": [
+        238,
+        278,
+        245,
+        287
+      ],
+      "distance_to_gt": 0.16197088596795156,
+      "gt_x": 282.1388888888889,
+      "gt_y": 241.08333333333334,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU129.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU129.png",
+      "name": "XDU129",
+      "prompt_x": 282.0,
+      "prompt_y": 241.0,
+      "score": 0.9999390840530396
+    },
+    {
+      "area": 61,
+      "bbox": [
+        292,
+        284,
+        302,
+        293
+      ],
+      "distance_to_gt": 0.36656852090159237,
+      "gt_x": 288.1639344262295,
+      "gt_y": 296.327868852459,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU129.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU129.png",
+      "name": "XDU129",
+      "prompt_x": 288.0,
+      "prompt_y": 296.0,
+      "score": 0.9454051852226257
+    },
+    {
+      "area": 20,
+      "bbox": [
+        77,
+        399,
+        82,
+        406
+      ],
+      "distance_to_gt": 1.761391495380854,
+      "gt_x": 401.75,
+      "gt_y": 78.8,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU134.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU134.png",
+      "name": "XDU134",
+      "prompt_x": 400.0,
+      "prompt_y": 79.0,
+      "score": 0.9999699592590332
+    },
+    {
+      "area": 82,
+      "bbox": [
+        415,
+        458,
+        426,
+        470
+      ],
+      "distance_to_gt": 0.7010869439904885,
+      "gt_x": 463.5487804878049,
+      "gt_y": 420.4634146341463,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU142.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU142.png",
+      "name": "XDU142",
+      "prompt_x": 464.0,
+      "prompt_y": 421.0,
+      "score": 0.9999862909317017
+    },
+    {
+      "area": 364,
+      "bbox": [
+        54,
+        167,
+        77,
+        190
+      ],
+      "distance_to_gt": 1.2096712580657047,
+      "gt_x": 178.77197802197801,
+      "gt_y": 64.93131868131869,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU146.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU146.png",
+      "name": "XDU146",
+      "prompt_x": 178.0,
+      "prompt_y": 64.0,
+      "score": 0.9999984502792358
+    },
+    {
+      "area": 519,
+      "bbox": [
+        188,
+        283,
+        220,
+        307
+      ],
+      "distance_to_gt": 2.2606346123054304,
+      "gt_x": 294.07899807321775,
+      "gt_y": 203.9865125240848,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU146.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU146.png",
+      "name": "XDU146",
+      "prompt_x": 293.0,
+      "prompt_y": 202.0,
+      "score": 0.752635657787323
+    },
+    {
+      "area": 50,
+      "bbox": [
+        467,
+        312,
+        474,
+        320
+      ],
+      "distance_to_gt": 0.26832815729998494,
+      "gt_x": 315.76,
+      "gt_y": 469.88,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU147.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU147.png",
+      "name": "XDU147",
+      "prompt_x": 316.0,
+      "prompt_y": 470.0,
+      "score": 0.9999822378158569
+    },
+    {
+      "area": 38,
+      "bbox": [
+        166,
+        257,
+        173,
+        264
+      ],
+      "distance_to_gt": 0.25918046846833886,
+      "gt_x": 260.2368421052632,
+      "gt_y": 168.89473684210526,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU151.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU151.png",
+      "name": "XDU151",
+      "prompt_x": 260.0,
+      "prompt_y": 169.0,
+      "score": 0.9999581575393677
+    },
+    {
+      "area": 34,
+      "bbox": [
+        340,
+        420,
+        347,
+        428
+      ],
+      "distance_to_gt": 1.353260831803236,
+      "gt_x": 423.02941176470586,
+      "gt_y": 342.6470588235294,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU160.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU160.png",
+      "name": "XDU160",
+      "prompt_x": 423.0,
+      "prompt_y": 344.0,
+      "score": 0.9999849796295166
+    },
+    {
+      "area": 30,
+      "bbox": [
+        199,
+        399,
+        204,
+        406
+      ],
+      "distance_to_gt": 0.8062257748298691,
+      "gt_x": 401.9,
+      "gt_y": 200.8,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU164.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU164.png",
+      "name": "XDU164",
+      "prompt_x": 402.0,
+      "prompt_y": 200.0,
+      "score": 0.9999667406082153
+    },
+    {
+      "area": 25,
+      "bbox": [
+        366,
+        130,
+        371,
+        136
+      ],
+      "distance_to_gt": 0.3124099870362659,
+      "gt_x": 132.24,
+      "gt_y": 367.8,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU167.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU167.png",
+      "name": "XDU167",
+      "prompt_x": 132.0,
+      "prompt_y": 368.0,
+      "score": 0.999225378036499
+    },
+    {
+      "area": 27,
+      "bbox": [
+        407,
+        341,
+        413,
+        347
+      ],
+      "distance_to_gt": 1.0006856360078622,
+      "gt_x": 343.6296296296296,
+      "gt_y": 409.77777777777777,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU169.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU169.png",
+      "name": "XDU169",
+      "prompt_x": 343.0,
+      "prompt_y": 409.0,
+      "score": 0.9663034081459045
+    },
+    {
+      "area": 44,
+      "bbox": [
+        407,
+        399,
+        415,
+        406
+      ],
+      "distance_to_gt": 1.091145807650695,
+      "gt_x": 401.6363636363636,
+      "gt_y": 409.8863636363636,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU169.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU169.png",
+      "name": "XDU169",
+      "prompt_x": 401.0,
+      "prompt_y": 409.0,
+      "score": 0.9998623132705688
+    },
+    {
+      "area": 10,
+      "bbox": [
+        122,
+        64,
+        126,
+        67
+      ],
+      "distance_to_gt": 0.5,
+      "gt_x": 65.0,
+      "gt_y": 123.5,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU176.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU176.png",
+      "name": "XDU176",
+      "prompt_x": 65.0,
+      "prompt_y": 124.0,
+      "score": 0.9999872446060181
+    },
+    {
+      "area": 17,
+      "bbox": [
+        208,
+        316,
+        214,
+        319
+      ],
+      "distance_to_gt": 0.35780956060576996,
+      "gt_x": 316.94117647058823,
+      "gt_y": 210.64705882352942,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU178.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU178.png",
+      "name": "XDU178",
+      "prompt_x": 317.0,
+      "prompt_y": 211.0,
+      "score": 0.9998315572738647
+    },
+    {
+      "area": 160,
+      "bbox": [
+        232,
+        125,
+        244,
+        144
+      ],
+      "distance_to_gt": 1.2306311896746442,
+      "gt_x": 133.75625,
+      "gt_y": 237.79375,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU185.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU185.png",
+      "name": "XDU185",
+      "prompt_x": 134.0,
+      "prompt_y": 239.0,
+      "score": 0.929876983165741
+    },
+    {
+      "area": 152,
+      "bbox": [
+        288,
+        67,
+        299,
+        87
+      ],
+      "distance_to_gt": 0.7976821078301412,
+      "gt_x": 77.33552631578948,
+      "gt_y": 293.2763157894737,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU185.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU185.png",
+      "name": "XDU185",
+      "prompt_x": 77.0,
+      "prompt_y": 294.0,
+      "score": 0.9999978542327881
+    },
+    {
+      "area": 37,
+      "bbox": [
+        195,
+        349,
+        202,
+        358
+      ],
+      "distance_to_gt": 0.2873012381820077,
+      "gt_x": 352.81081081081084,
+      "gt_y": 197.78378378378378,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU189.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU189.png",
+      "name": "XDU189",
+      "prompt_x": 353.0,
+      "prompt_y": 198.0,
+      "score": 0.9999498128890991
+    },
+    {
+      "area": 37,
+      "bbox": [
+        138,
+        114,
+        146,
+        124
+      ],
+      "distance_to_gt": 0.28217044618676124,
+      "gt_x": 118.91891891891892,
+      "gt_y": 141.72972972972974,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU192.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU192.png",
+      "name": "XDU192",
+      "prompt_x": 119.0,
+      "prompt_y": 142.0,
+      "score": 0.9999816417694092
+    },
+    {
+      "area": 5,
+      "bbox": [
+        171,
+        127,
+        173,
+        130
+      ],
+      "distance_to_gt": 0.6324555320336713,
+      "gt_x": 127.8,
+      "gt_y": 171.6,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU192.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU192.png",
+      "name": "XDU192",
+      "prompt_x": 128.0,
+      "prompt_y": 171.0,
+      "score": 0.3223731517791748
+    },
+    {
+      "area": 48,
+      "bbox": [
+        175,
+        154,
+        185,
+        164
+      ],
+      "distance_to_gt": 0.6984606089266692,
+      "gt_x": 158.20833333333334,
+      "gt_y": 179.66666666666666,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU192.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU192.png",
+      "name": "XDU192",
+      "prompt_x": 158.0,
+      "prompt_y": 179.0,
+      "score": 0.6340575814247131
+    },
+    {
+      "area": 223,
+      "bbox": [
+        129,
+        148,
+        144,
+        168
+      ],
+      "distance_to_gt": 0.4265986006825251,
+      "gt_x": 157.6726457399103,
+      "gt_y": 136.27354260089686,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU193.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU193.png",
+      "name": "XDU193",
+      "prompt_x": 158.0,
+      "prompt_y": 136.0,
+      "score": 0.9997865557670593
+    },
+    {
+      "area": 36,
+      "bbox": [
+        314,
+        358,
+        320,
+        366
+      ],
+      "distance_to_gt": 0.5121969142940562,
+      "gt_x": 361.3333333333333,
+      "gt_y": 316.3888888888889,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU195.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU195.png",
+      "name": "XDU195",
+      "prompt_x": 361.0,
+      "prompt_y": 316.0,
+      "score": 0.9142181277275085
+    },
+    {
+      "area": 38,
+      "bbox": [
+        369,
+        442,
+        375,
+        450
+      ],
+      "distance_to_gt": 0.3068922049918276,
+      "gt_x": 445.7368421052632,
+      "gt_y": 371.8421052631579,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU195.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU195.png",
+      "name": "XDU195",
+      "prompt_x": 446.0,
+      "prompt_y": 372.0,
+      "score": 0.9999217987060547
+    },
+    {
+      "area": 42,
+      "bbox": [
+        384,
+        295,
+        393,
+        304
+      ],
+      "distance_to_gt": 0.7384791628224227,
+      "gt_x": 298.73809523809524,
+      "gt_y": 387.0238095238095,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU205.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU205.png",
+      "name": "XDU205",
+      "prompt_x": 298.0,
+      "prompt_y": 387.0,
+      "score": 0.9999727010726929
+    },
+    {
+      "area": 28,
+      "bbox": [
+        139,
+        348,
+        146,
+        354
+      ],
+      "distance_to_gt": 0.4164965639175048,
+      "gt_x": 350.64285714285717,
+      "gt_y": 141.78571428571428,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU209.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU209.png",
+      "name": "XDU209",
+      "prompt_x": 351.0,
+      "prompt_y": 142.0,
+      "score": 0.9999200105667114
+    },
+    {
+      "area": 27,
+      "bbox": [
+        285,
+        401,
+        291,
+        407
+      ],
+      "distance_to_gt": 0.4640727439311611,
+      "gt_x": 403.77777777777777,
+      "gt_y": 287.5925925925926,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU216.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU216.png",
+      "name": "XDU216",
+      "prompt_x": 404.0,
+      "prompt_y": 288.0,
+      "score": 0.9999567270278931
+    },
+    {
+      "area": 50,
+      "bbox": [
+        122,
+        340,
+        132,
+        350
+      ],
+      "distance_to_gt": 0.7665507158694622,
+      "gt_x": 344.76,
+      "gt_y": 125.9,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU217.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU217.png",
+      "name": "XDU217",
+      "prompt_x": 344.0,
+      "prompt_y": 126.0,
+      "score": 0.9999649524688721
+    },
+    {
+      "area": 24,
+      "bbox": [
+        256,
+        255,
+        262,
+        261
+      ],
+      "distance_to_gt": 0.5,
+      "gt_x": 257.5,
+      "gt_y": 258.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU219.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU219.png",
+      "name": "XDU219",
+      "prompt_x": 257.0,
+      "prompt_y": 258.0,
+      "score": 0.7412467002868652
+    },
+    {
+      "area": 30,
+      "bbox": [
+        295,
+        255,
+        302,
+        260
+      ],
+      "distance_to_gt": 0.22360679774997896,
+      "gt_x": 257.2,
+      "gt_y": 298.1,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU219.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU219.png",
+      "name": "XDU219",
+      "prompt_x": 257.0,
+      "prompt_y": 298.0,
+      "score": 0.9998863935470581
+    },
+    {
+      "area": 21,
+      "bbox": [
+        394,
+        242,
+        400,
+        247
+      ],
+      "distance_to_gt": 0.5323971374999458,
+      "gt_x": 244.0952380952381,
+      "gt_y": 396.5238095238095,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU219.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU219.png",
+      "name": "XDU219",
+      "prompt_x": 244.0,
+      "prompt_y": 396.0,
+      "score": 0.9282061457633972
+    },
+    {
+      "area": 4,
+      "bbox": [
+        475,
+        82,
+        477,
+        84
+      ],
+      "distance_to_gt": 1.5811388300841898,
+      "gt_x": 82.5,
+      "gt_y": 475.5,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU219.png",
+      "instance_id": 3,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU219.png",
+      "name": "XDU219",
+      "prompt_x": 83.0,
+      "prompt_y": 474.0,
+      "score": 0.5827301144599915
+    },
+    {
+      "area": 80,
+      "bbox": [
+        145,
+        268,
+        157,
+        280
+      ],
+      "distance_to_gt": 0.36055512754640207,
+      "gt_x": 273.3,
+      "gt_y": 150.2,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU223.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU223.png",
+      "name": "XDU223",
+      "prompt_x": 273.0,
+      "prompt_y": 150.0,
+      "score": 0.999982476234436
+    },
+    {
+      "area": 17,
+      "bbox": [
+        182,
+        264,
+        188,
+        268
+      ],
+      "distance_to_gt": 1.3529411764706083,
+      "gt_x": 265.3529411764706,
+      "gt_y": 184.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU223.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU223.png",
+      "name": "XDU223",
+      "prompt_x": 264.0,
+      "prompt_y": 184.0,
+      "score": 0.8698642253875732
+    },
+    {
+      "area": 57,
+      "bbox": [
+        223,
+        250,
+        235,
+        258
+      ],
+      "distance_to_gt": 0.8876568870648065,
+      "gt_x": 253.71929824561403,
+      "gt_y": 228.8421052631579,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU223.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU223.png",
+      "name": "XDU223",
+      "prompt_x": 254.0,
+      "prompt_y": 228.0,
+      "score": 0.997001051902771
+    },
+    {
+      "area": 12,
+      "bbox": [
+        283,
+        237,
+        287,
+        241
+      ],
+      "distance_to_gt": 0.5270462766947359,
+      "gt_x": 238.5,
+      "gt_y": 284.1666666666667,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU225.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU225.png",
+      "name": "XDU225",
+      "prompt_x": 239.0,
+      "prompt_y": 284.0,
+      "score": 0.9999725818634033
+    },
+    {
+      "area": 156,
+      "bbox": [
+        402,
+        68,
+        420,
+        85
+      ],
+      "distance_to_gt": 1.136063106515455,
+      "gt_x": 76.12179487179488,
+      "gt_y": 410.1794871794872,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU231.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU231.png",
+      "name": "XDU231",
+      "prompt_x": 75.0,
+      "prompt_y": 410.0,
+      "score": 0.6220417022705078
+    },
+    {
+      "area": 99,
+      "bbox": [
+        426,
+        225,
+        439,
+        235
+      ],
+      "distance_to_gt": 0.5982663795943947,
+      "gt_x": 229.12121212121212,
+      "gt_y": 431.5858585858586,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU231.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU231.png",
+      "name": "XDU231",
+      "prompt_x": 229.0,
+      "prompt_y": 431.0,
+      "score": 0.9999192953109741
+    },
+    {
+      "area": 57,
+      "bbox": [
+        431,
+        155,
+        441,
+        164
+      ],
+      "distance_to_gt": 0.5464004035928798,
+      "gt_x": 159.05263157894737,
+      "gt_y": 435.4561403508772,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU231.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU231.png",
+      "name": "XDU231",
+      "prompt_x": 159.0,
+      "prompt_y": 436.0,
+      "score": 0.7502851486206055
+    },
+    {
+      "area": 41,
+      "bbox": [
+        117,
+        65,
+        124,
+        73
+      ],
+      "distance_to_gt": 0.493864798324799,
+      "gt_x": 68.41463414634147,
+      "gt_y": 120.26829268292683,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU240.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU240.png",
+      "name": "XDU240",
+      "prompt_x": 68.0,
+      "prompt_y": 120.0,
+      "score": 0.9999579191207886
+    },
+    {
+      "area": 25,
+      "bbox": [
+        332,
+        382,
+        336,
+        390
+      ],
+      "distance_to_gt": 0.36878177829172537,
+      "gt_x": 385.64,
+      "gt_y": 333.92,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU241.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU241.png",
+      "name": "XDU241",
+      "prompt_x": 386.0,
+      "prompt_y": 334.0,
+      "score": 0.9999375343322754
+    },
+    {
+      "area": 14,
+      "bbox": [
+        67,
+        340,
+        71,
+        344
+      ],
+      "distance_to_gt": 0.5758755534498924,
+      "gt_x": 341.7142857142857,
+      "gt_y": 68.5,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU244.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU244.png",
+      "name": "XDU244",
+      "prompt_x": 342.0,
+      "prompt_y": 68.0,
+      "score": 0.7111549377441406
+    },
+    {
+      "area": 26,
+      "bbox": [
+        89,
+        148,
+        95,
+        154
+      ],
+      "distance_to_gt": 0.48192169562082837,
+      "gt_x": 150.76923076923077,
+      "gt_y": 91.57692307692308,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU244.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU244.png",
+      "name": "XDU244",
+      "prompt_x": 151.0,
+      "prompt_y": 92.0,
+      "score": 0.9999750852584839
+    },
+    {
+      "area": 106,
+      "bbox": [
+        453,
+        328,
+        466,
+        339
+      ],
+      "distance_to_gt": 0.1772480587552537,
+      "gt_x": 333.07547169811323,
+      "gt_y": 459.16037735849056,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU253.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU253.png",
+      "name": "XDU253",
+      "prompt_x": 333.0,
+      "prompt_y": 459.0,
+      "score": 0.9999781847000122
+    },
+    {
+      "area": 29,
+      "bbox": [
+        368,
+        282,
+        377,
+        288
+      ],
+      "distance_to_gt": 1.1400189830907712,
+      "gt_x": 285.13793103448273,
+      "gt_y": 372.0689655172414,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU257.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU257.png",
+      "name": "XDU257",
+      "prompt_x": 284.0,
+      "prompt_y": 372.0,
+      "score": 0.9999675750732422
+    },
+    {
+      "area": 48,
+      "bbox": [
+        135,
+        393,
+        144,
+        404
+      ],
+      "distance_to_gt": 0.5432668671002128,
+      "gt_x": 398.0416666666667,
+      "gt_y": 138.45833333333334,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU258.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU258.png",
+      "name": "XDU258",
+      "prompt_x": 398.0,
+      "prompt_y": 139.0,
+      "score": 0.9999560117721558
+    },
+    {
+      "area": 40,
+      "bbox": [
+        184,
+        420,
+        196,
+        424
+      ],
+      "distance_to_gt": 0.5482928049865303,
+      "gt_x": 421.5,
+      "gt_y": 189.225,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU258.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU258.png",
+      "name": "XDU258",
+      "prompt_x": 422.0,
+      "prompt_y": 189.0,
+      "score": 0.6847772002220154
+    },
+    {
+      "area": 92,
+      "bbox": [
+        366,
+        269,
+        374,
+        284
+      ],
+      "distance_to_gt": 0.6566872811736113,
+      "gt_x": 275.7282608695652,
+      "gt_y": 369.4021739130435,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU259.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU259.png",
+      "name": "XDU259",
+      "prompt_x": 276.0,
+      "prompt_y": 370.0,
+      "score": 0.9999489784240723
+    },
+    {
+      "area": 12,
+      "bbox": [
+        454,
+        306,
+        459,
+        309
+      ],
+      "distance_to_gt": 0.18633899812499094,
+      "gt_x": 307.0833333333333,
+      "gt_y": 456.1666666666667,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU278.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU278.png",
+      "name": "XDU278",
+      "prompt_x": 307.0,
+      "prompt_y": 456.0,
+      "score": 0.9999879598617554
+    },
+    {
+      "area": 38,
+      "bbox": [
+        261,
+        397,
+        268,
+        404
+      ],
+      "distance_to_gt": 0.24261959098136937,
+      "gt_x": 400.1842105263158,
+      "gt_y": 263.8421052631579,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU279.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU279.png",
+      "name": "XDU279",
+      "prompt_x": 400.0,
+      "prompt_y": 264.0,
+      "score": 0.9999911785125732
+    },
+    {
+      "area": 60,
+      "bbox": [
+        214,
+        169,
+        224,
+        177
+      ],
+      "distance_to_gt": 0.09999999999999432,
+      "gt_x": 172.0,
+      "gt_y": 218.9,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU28.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU28.png",
+      "name": "XDU28",
+      "prompt_x": 172.0,
+      "prompt_y": 219.0,
+      "score": 0.9999904632568359
+    },
+    {
+      "area": 108,
+      "bbox": [
+        396,
+        248,
+        406,
+        262
+      ],
+      "distance_to_gt": 0.343592135468143,
+      "gt_x": 254.66666666666666,
+      "gt_y": 400.9166666666667,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU289.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU289.png",
+      "name": "XDU289",
+      "prompt_x": 255.0,
+      "prompt_y": 401.0,
+      "score": 0.9999973773956299
+    },
+    {
+      "area": 29,
+      "bbox": [
+        348,
+        445,
+        353,
+        452
+      ],
+      "distance_to_gt": 0.27800888787234945,
+      "gt_x": 448.2413793103448,
+      "gt_y": 349.86206896551727,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU295.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU295.png",
+      "name": "XDU295",
+      "prompt_x": 448.0,
+      "prompt_y": 350.0,
+      "score": 0.9327098727226257
+    },
+    {
+      "area": 63,
+      "bbox": [
+        360,
+        82,
+        370,
+        90
+      ],
+      "distance_to_gt": 0.7172776842980852,
+      "gt_x": 85.34920634920636,
+      "gt_y": 364.3015873015873,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU295.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU295.png",
+      "name": "XDU295",
+      "prompt_x": 86.0,
+      "prompt_y": 364.0,
+      "score": 0.9999668598175049
+    },
+    {
+      "area": 32,
+      "bbox": [
+        320,
+        223,
+        326,
+        234
+      ],
+      "distance_to_gt": 1.4131773818243767,
+      "gt_x": 228.34375,
+      "gt_y": 322.4375,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU3.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU3.png",
+      "name": "XDU3",
+      "prompt_x": 227.0,
+      "prompt_y": 322.0,
+      "score": 0.9998329877853394
+    },
+    {
+      "area": 27,
+      "bbox": [
+        97,
+        379,
+        103,
+        386
+      ],
+      "distance_to_gt": 1.4195383627212388,
+      "gt_x": 381.81481481481484,
+      "gt_y": 99.4074074074074,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU302.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU302.png",
+      "name": "XDU302",
+      "prompt_x": 382.0,
+      "prompt_y": 98.0,
+      "score": 0.5995076894760132
+    },
+    {
+      "area": 65,
+      "bbox": [
+        286,
+        144,
+        297,
+        155
+      ],
+      "distance_to_gt": 0.72111025509282,
+      "gt_x": 149.4,
+      "gt_y": 290.6,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU316.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU316.png",
+      "name": "XDU316",
+      "prompt_x": 149.0,
+      "prompt_y": 290.0,
+      "score": 0.663283109664917
+    },
+    {
+      "area": 57,
+      "bbox": [
+        334,
+        137,
+        348,
+        144
+      ],
+      "distance_to_gt": 0.7980045905645251,
+      "gt_x": 140.43859649122808,
+      "gt_y": 340.3333333333333,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU316.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU316.png",
+      "name": "XDU316",
+      "prompt_x": 140.0,
+      "prompt_y": 341.0,
+      "score": 0.9999797344207764
+    },
+    {
+      "area": 243,
+      "bbox": [
+        113,
+        62,
+        130,
+        83
+      ],
+      "distance_to_gt": 0.36319058211890304,
+      "gt_x": 71.87654320987654,
+      "gt_y": 121.34156378600824,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU319.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU319.png",
+      "name": "XDU319",
+      "prompt_x": 72.0,
+      "prompt_y": 121.0,
+      "score": 0.999995231628418
+    },
+    {
+      "area": 56,
+      "bbox": [
+        143,
+        384,
+        152,
+        395
+      ],
+      "distance_to_gt": 0.11434150423988625,
+      "gt_x": 389.0892857142857,
+      "gt_y": 146.92857142857142,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU321.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU321.png",
+      "name": "XDU321",
+      "prompt_x": 389.0,
+      "prompt_y": 147.0,
+      "score": 0.5059712529182434
+    },
+    {
+      "area": 39,
+      "bbox": [
+        187,
+        392,
+        198,
+        396
+      ],
+      "distance_to_gt": 0.42288262826847994,
+      "gt_x": 393.4102564102564,
+      "gt_y": 192.10256410256412,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU321.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU321.png",
+      "name": "XDU321",
+      "prompt_x": 393.0,
+      "prompt_y": 192.0,
+      "score": 0.9999552965164185
+    },
+    {
+      "area": 14,
+      "bbox": [
+        356,
+        220,
+        359,
+        225
+      ],
+      "distance_to_gt": 0.15971914124997408,
+      "gt_x": 222.14285714285714,
+      "gt_y": 357.07142857142856,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU329.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU329.png",
+      "name": "XDU329",
+      "prompt_x": 222.0,
+      "prompt_y": 357.0,
+      "score": 0.9999454021453857
+    },
+    {
+      "area": 37,
+      "bbox": [
+        150,
+        395,
+        157,
+        405
+      ],
+      "distance_to_gt": 0.2910899895748244,
+      "gt_x": 399.27027027027026,
+      "gt_y": 153.8918918918919,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU33.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU33.png",
+      "name": "XDU33",
+      "prompt_x": 399.0,
+      "prompt_y": 154.0,
+      "score": 0.9999538660049438
+    },
+    {
+      "area": 60,
+      "bbox": [
+        154,
+        362,
+        160,
+        375
+      ],
+      "distance_to_gt": 1.4008925726121777,
+      "gt_x": 368.15,
+      "gt_y": 156.2,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU33.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU33.png",
+      "name": "XDU33",
+      "prompt_x": 367.0,
+      "prompt_y": 157.0,
+      "score": 0.6298536062240601
+    },
+    {
+      "area": 56,
+      "bbox": [
+        107,
+        86,
+        123,
+        91
+      ],
+      "distance_to_gt": 0.08928571428571389,
+      "gt_x": 88.05357142857143,
+      "gt_y": 114.07142857142857,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU334.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU334.png",
+      "name": "XDU334",
+      "prompt_x": 88.0,
+      "prompt_y": 114.0,
+      "score": 0.9993017911911011
+    },
+    {
+      "area": 13,
+      "bbox": [
+        215,
+        126,
+        219,
+        131
+      ],
+      "distance_to_gt": 0.8970695222838916,
+      "gt_x": 128.46153846153845,
+      "gt_y": 216.76923076923077,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU343.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU343.png",
+      "name": "XDU343",
+      "prompt_x": 128.0,
+      "prompt_y": 216.0,
+      "score": 0.9996578693389893
+    },
+    {
+      "area": 17,
+      "bbox": [
+        257,
+        284,
+        262,
+        288
+      ],
+      "distance_to_gt": 0.428241758192996,
+      "gt_x": 285.5882352941176,
+      "gt_y": 258.88235294117646,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU352.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU352.png",
+      "name": "XDU352",
+      "prompt_x": 286.0,
+      "prompt_y": 259.0,
+      "score": 0.9752139449119568
+    },
+    {
+      "area": 49,
+      "bbox": [
+        291,
+        275,
+        297,
+        286
+      ],
+      "distance_to_gt": 0.6905683394158851,
+      "gt_x": 279.7755102040816,
+      "gt_y": 293.3469387755102,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU352.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU352.png",
+      "name": "XDU352",
+      "prompt_x": 280.0,
+      "prompt_y": 294.0,
+      "score": 0.9999812841415405
+    },
+    {
+      "area": 10,
+      "bbox": [
+        325,
+        340,
+        328,
+        344
+      ],
+      "distance_to_gt": 0.5,
+      "gt_x": 341.5,
+      "gt_y": 326.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU352.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU352.png",
+      "name": "XDU352",
+      "prompt_x": 342.0,
+      "prompt_y": 326.0,
+      "score": 0.8281250596046448
+    },
+    {
+      "area": 29,
+      "bbox": [
+        359,
+        282,
+        366,
+        288
+      ],
+      "distance_to_gt": 0.9316728335245799,
+      "gt_x": 284.58620689655174,
+      "gt_y": 362.2758620689655,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU354.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU354.png",
+      "name": "XDU354",
+      "prompt_x": 284.0,
+      "prompt_y": 363.0,
+      "score": 0.999955415725708
+    },
+    {
+      "area": 106,
+      "bbox": [
+        149,
+        484,
+        162,
+        495
+      ],
+      "distance_to_gt": 0.2266115499899132,
+      "gt_x": 489.22641509433964,
+      "gt_y": 155.00943396226415,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU369.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU369.png",
+      "name": "XDU369",
+      "prompt_x": 489.0,
+      "prompt_y": 155.0,
+      "score": 0.9874358177185059
+    },
+    {
+      "area": 31,
+      "bbox": [
+        47,
+        200,
+        57,
+        208
+      ],
+      "distance_to_gt": 0.6650170363899557,
+      "gt_x": 203.6451612903226,
+      "gt_y": 51.16129032258065,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU371.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU371.png",
+      "name": "XDU371",
+      "prompt_x": 203.0,
+      "prompt_y": 51.0,
+      "score": 0.9998134970664978
+    },
+    {
+      "area": 35,
+      "bbox": [
+        403,
+        190,
+        414,
+        198
+      ],
+      "distance_to_gt": 0.8241260058203611,
+      "gt_x": 192.45714285714286,
+      "gt_y": 409.3142857142857,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU374.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU374.png",
+      "name": "XDU374",
+      "prompt_x": 192.0,
+      "prompt_y": 410.0,
+      "score": 0.6845730543136597
+    },
+    {
+      "area": 24,
+      "bbox": [
+        432,
+        180,
+        440,
+        186
+      ],
+      "distance_to_gt": 1.8717564537680322,
+      "gt_x": 182.45833333333334,
+      "gt_y": 435.7916666666667,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU374.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU374.png",
+      "name": "XDU374",
+      "prompt_x": 183.0,
+      "prompt_y": 434.0,
+      "score": 0.9608616828918457
+    },
+    {
+      "area": 40,
+      "bbox": [
+        134,
+        159,
+        141,
+        166
+      ],
+      "distance_to_gt": 0.45961940777127075,
+      "gt_x": 162.425,
+      "gt_y": 137.175,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU376.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU376.png",
+      "name": "XDU376",
+      "prompt_x": 162.0,
+      "prompt_y": 137.0,
+      "score": 0.9008289575576782
+    },
+    {
+      "area": 167,
+      "bbox": [
+        221,
+        340,
+        232,
+        360
+      ],
+      "distance_to_gt": 0.6362539621144707,
+      "gt_x": 349.63473053892216,
+      "gt_y": 226.47904191616766,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU376.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU376.png",
+      "name": "XDU376",
+      "prompt_x": 350.0,
+      "prompt_y": 227.0,
+      "score": 0.9999949932098389
+    },
+    {
+      "area": 61,
+      "bbox": [
+        376,
+        312,
+        387,
+        320
+      ],
+      "distance_to_gt": 1.1550108166431807,
+      "gt_x": 315.655737704918,
+      "gt_y": 381.04918032786884,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU381.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU381.png",
+      "name": "XDU381",
+      "prompt_x": 315.0,
+      "prompt_y": 382.0,
+      "score": 0.83104008436203
+    },
+    {
+      "area": 32,
+      "bbox": [
+        215,
+        192,
+        223,
+        200
+      ],
+      "distance_to_gt": 1.0444234354417752,
+      "gt_x": 195.65625,
+      "gt_y": 219.1875,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU393.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU393.png",
+      "name": "XDU393",
+      "prompt_x": 195.0,
+      "prompt_y": 220.0,
+      "score": 0.9999639987945557
+    },
+    {
+      "area": 62,
+      "bbox": [
+        273,
+        199,
+        284,
+        208
+      ],
+      "distance_to_gt": 1.0864073625193122,
+      "gt_x": 203.33870967741936,
+      "gt_y": 277.96774193548384,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU393.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU393.png",
+      "name": "XDU393",
+      "prompt_x": 203.0,
+      "prompt_y": 279.0,
+      "score": 0.9013225436210632
+    },
+    {
+      "area": 25,
+      "bbox": [
+        280,
+        320,
+        288,
+        332
+      ],
+      "distance_to_gt": 1.234827923234647,
+      "gt_x": 326.52,
+      "gt_y": 283.88,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU394.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU394.png",
+      "name": "XDU394",
+      "prompt_x": 326.0,
+      "prompt_y": 285.0,
+      "score": 0.9999889135360718
+    },
+    {
+      "area": 59,
+      "bbox": [
+        334,
+        348,
+        346,
+        358
+      ],
+      "distance_to_gt": 0.7474941380068091,
+      "gt_x": 352.40677966101697,
+      "gt_y": 339.3728813559322,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU394.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU394.png",
+      "name": "XDU394",
+      "prompt_x": 352.0,
+      "prompt_y": 340.0,
+      "score": 0.9396487474441528
+    },
+    {
+      "area": 27,
+      "bbox": [
+        266,
+        126,
+        272,
+        132
+      ],
+      "distance_to_gt": 1.0376982019349454,
+      "gt_x": 128.59259259259258,
+      "gt_y": 268.14814814814815,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU398.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU398.png",
+      "name": "XDU398",
+      "prompt_x": 128.0,
+      "prompt_y": 269.0,
+      "score": 0.9999611377716064
+    },
+    {
+      "area": 6,
+      "bbox": [
+        284,
+        281,
+        286,
+        284
+      ],
+      "distance_to_gt": 0.5,
+      "gt_x": 282.0,
+      "gt_y": 284.5,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU398.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU398.png",
+      "name": "XDU398",
+      "prompt_x": 282.0,
+      "prompt_y": 285.0,
+      "score": 0.9269939064979553
+    },
+    {
+      "area": 8,
+      "bbox": [
+        150,
+        357,
+        152,
+        361
+      ],
+      "distance_to_gt": 0.7071067811865476,
+      "gt_x": 358.5,
+      "gt_y": 150.5,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU40.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU40.png",
+      "name": "XDU40",
+      "prompt_x": 359.0,
+      "prompt_y": 151.0,
+      "score": 0.999991774559021
+    },
+    {
+      "area": 7,
+      "bbox": [
+        253,
+        244,
+        255,
+        249
+      ],
+      "distance_to_gt": 1.0301575072754356,
+      "gt_x": 245.85714285714286,
+      "gt_y": 253.42857142857142,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU404.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU404.png",
+      "name": "XDU404",
+      "prompt_x": 245.0,
+      "prompt_y": 254.0,
+      "score": 0.9999371767044067
+    },
+    {
+      "area": 67,
+      "bbox": [
+        267,
+        487,
+        275,
+        496
+      ],
+      "distance_to_gt": 1.014266687046702,
+      "gt_x": 490.85074626865674,
+      "gt_y": 270.44776119402985,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU406.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU406.png",
+      "name": "XDU406",
+      "prompt_x": 490.0,
+      "prompt_y": 271.0,
+      "score": 0.9999876022338867
+    },
+    {
+      "area": 110,
+      "bbox": [
+        271,
+        424,
+        286,
+        436
+      ],
+      "distance_to_gt": 2.1078758255333123,
+      "gt_x": 429.1909090909091,
+      "gt_y": 278.08181818181816,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU406.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU406.png",
+      "name": "XDU406",
+      "prompt_x": 431.0,
+      "prompt_y": 277.0,
+      "score": 0.5728751420974731
+    },
+    {
+      "area": 17,
+      "bbox": [
+        356,
+        331,
+        361,
+        335
+      ],
+      "distance_to_gt": 1.327119314432782,
+      "gt_x": 332.29411764705884,
+      "gt_y": 357.70588235294116,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU41.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU41.png",
+      "name": "XDU41",
+      "prompt_x": 331.0,
+      "prompt_y": 358.0,
+      "score": 0.9999867677688599
+    },
+    {
+      "area": 184,
+      "bbox": [
+        116,
+        232,
+        131,
+        250
+      ],
+      "distance_to_gt": 1.0587229931296798,
+      "gt_x": 240.7663043478261,
+      "gt_y": 122.96739130434783,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU415.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU415.png",
+      "name": "XDU415",
+      "prompt_x": 241.0,
+      "prompt_y": 124.0,
+      "score": 0.6933264136314392
+    },
+    {
+      "area": 200,
+      "bbox": [
+        127,
+        204,
+        142,
+        224
+      ],
+      "distance_to_gt": 2.0271716750191726,
+      "gt_x": 213.28,
+      "gt_y": 134.105,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU415.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU415.png",
+      "name": "XDU415",
+      "prompt_x": 214.0,
+      "prompt_y": 136.0,
+      "score": 0.913117527961731
+    },
+    {
+      "area": 128,
+      "bbox": [
+        403,
+        68,
+        418,
+        84
+      ],
+      "distance_to_gt": 0.6616684787574892,
+      "gt_x": 75.609375,
+      "gt_y": 409.7421875,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU416.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU416.png",
+      "name": "XDU416",
+      "prompt_x": 75.0,
+      "prompt_y": 410.0,
+      "score": 0.7455416321754456
+    },
+    {
+      "area": 47,
+      "bbox": [
+        426,
+        226,
+        435,
+        233
+      ],
+      "distance_to_gt": 1.0,
+      "gt_x": 229.0,
+      "gt_y": 430.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU416.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU416.png",
+      "name": "XDU416",
+      "prompt_x": 229.0,
+      "prompt_y": 431.0,
+      "score": 0.9998855590820312
+    },
+    {
+      "area": 38,
+      "bbox": [
+        432,
+        156,
+        439,
+        164
+      ],
+      "distance_to_gt": 0.3157894736842195,
+      "gt_x": 159.31578947368422,
+      "gt_y": 435.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU416.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU416.png",
+      "name": "XDU416",
+      "prompt_x": 159.0,
+      "prompt_y": 435.0,
+      "score": 0.8791815638542175
+    },
+    {
+      "area": 39,
+      "bbox": [
+        404,
+        212,
+        409,
+        222
+      ],
+      "distance_to_gt": 0.17200522903842091,
+      "gt_x": 216.92307692307693,
+      "gt_y": 405.84615384615387,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU421.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU421.png",
+      "name": "XDU421",
+      "prompt_x": 217.0,
+      "prompt_y": 406.0,
+      "score": 0.9999635219573975
+    },
+    {
+      "area": 288,
+      "bbox": [
+        172,
+        354,
+        190,
+        377
+      ],
+      "distance_to_gt": 0.609580232138128,
+      "gt_x": 364.9513888888889,
+      "gt_y": 181.39236111111111,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU426.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU426.png",
+      "name": "XDU426",
+      "prompt_x": 365.0,
+      "prompt_y": 182.0,
+      "score": 0.9999878406524658
+    },
+    {
+      "area": 262,
+      "bbox": [
+        164,
+        292,
+        182,
+        314
+      ],
+      "distance_to_gt": 0.6801286825046212,
+      "gt_x": 302.41984732824426,
+      "gt_y": 173.64503816793894,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU429.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU429.png",
+      "name": "XDU429",
+      "prompt_x": 303.0,
+      "prompt_y": 174.0,
+      "score": 0.9999966621398926
+    },
+    {
+      "area": 117,
+      "bbox": [
+        168,
+        250,
+        180,
+        264
+      ],
+      "distance_to_gt": 0.7660427765728732,
+      "gt_x": 256.85470085470087,
+      "gt_y": 173.24786324786325,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU43.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU43.png",
+      "name": "XDU43",
+      "prompt_x": 257.0,
+      "prompt_y": 174.0,
+      "score": 0.9999140501022339
+    },
+    {
+      "area": 54,
+      "bbox": [
+        320,
+        292,
+        328,
+        301
+      ],
+      "distance_to_gt": 1.0963526011567373,
+      "gt_x": 295.8703703703704,
+      "gt_y": 323.6666666666667,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU441.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU441.png",
+      "name": "XDU441",
+      "prompt_x": 295.0,
+      "prompt_y": 323.0,
+      "score": 0.9999442100524902
+    },
+    {
+      "area": 41,
+      "bbox": [
+        41,
+        291,
+        50,
+        297
+      ],
+      "distance_to_gt": 0.5453824335365567,
+      "gt_x": 293.4634146341463,
+      "gt_y": 44.90243902439025,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU442.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU442.png",
+      "name": "XDU442",
+      "prompt_x": 294.0,
+      "prompt_y": 45.0,
+      "score": 0.9991944432258606
+    },
+    {
+      "area": 21,
+      "bbox": [
+        39,
+        317,
+        43,
+        324
+      ],
+      "distance_to_gt": 1.2417528390862085,
+      "gt_x": 320.04761904761904,
+      "gt_y": 40.666666666666664,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU447.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU447.png",
+      "name": "XDU447",
+      "prompt_x": 319.0,
+      "prompt_y": 40.0,
+      "score": 0.7871841788291931
+    },
+    {
+      "area": 17,
+      "bbox": [
+        139,
+        325,
+        143,
+        330
+      ],
+      "distance_to_gt": 0.9737026680733358,
+      "gt_x": 326.88235294117646,
+      "gt_y": 140.58823529411765,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU447.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU447.png",
+      "name": "XDU447",
+      "prompt_x": 326.0,
+      "prompt_y": 141.0,
+      "score": 0.7258989214897156
+    },
+    {
+      "area": 62,
+      "bbox": [
+        380,
+        28,
+        386,
+        42
+      ],
+      "distance_to_gt": 1.0607214869327293,
+      "gt_x": 34.25806451612903,
+      "gt_y": 382.241935483871,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU447.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU447.png",
+      "name": "XDU447",
+      "prompt_x": 35.0,
+      "prompt_y": 383.0,
+      "score": 0.9989346861839294
+    },
+    {
+      "area": 18,
+      "bbox": [
+        193,
+        192,
+        198,
+        198
+      ],
+      "distance_to_gt": 0.4230985058813216,
+      "gt_x": 194.38888888888889,
+      "gt_y": 194.83333333333334,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU45.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU45.png",
+      "name": "XDU45",
+      "prompt_x": 194.0,
+      "prompt_y": 195.0,
+      "score": 0.9996645450592041
+    },
+    {
+      "area": 15,
+      "bbox": [
+        223,
+        175,
+        228,
+        179
+      ],
+      "distance_to_gt": 1.077032961426903,
+      "gt_x": 176.4,
+      "gt_y": 225.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU45.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU45.png",
+      "name": "XDU45",
+      "prompt_x": 176.0,
+      "prompt_y": 224.0,
+      "score": 0.8180129528045654
+    },
+    {
+      "area": 10,
+      "bbox": [
+        22,
+        47,
+        26,
+        50
+      ],
+      "distance_to_gt": 0.36055512754640107,
+      "gt_x": 48.2,
+      "gt_y": 23.3,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU450.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU450.png",
+      "name": "XDU450",
+      "prompt_x": 48.0,
+      "prompt_y": 23.0,
+      "score": 0.9654564261436462
+    },
+    {
+      "area": 32,
+      "bbox": [
+        41,
+        72,
+        49,
+        81
+      ],
+      "distance_to_gt": 0.5633673867912483,
+      "gt_x": 75.8125,
+      "gt_y": 44.53125,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU450.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU450.png",
+      "name": "XDU450",
+      "prompt_x": 76.0,
+      "prompt_y": 44.0,
+      "score": 0.9998526573181152
+    },
+    {
+      "area": 23,
+      "bbox": [
+        163,
+        189,
+        167,
+        197
+      ],
+      "distance_to_gt": 0.5800723506141832,
+      "gt_x": 192.43478260869566,
+      "gt_y": 164.8695652173913,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU451.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU451.png",
+      "name": "XDU451",
+      "prompt_x": 193.0,
+      "prompt_y": 165.0,
+      "score": 0.9993933439254761
+    },
+    {
+      "area": 25,
+      "bbox": [
+        177,
+        398,
+        182,
+        404
+      ],
+      "distance_to_gt": 0.17888543820001115,
+      "gt_x": 400.84,
+      "gt_y": 178.92,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU451.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU451.png",
+      "name": "XDU451",
+      "prompt_x": 401.0,
+      "prompt_y": 179.0,
+      "score": 0.9062259197235107
+    },
+    {
+      "area": 17,
+      "bbox": [
+        208,
+        203,
+        211,
+        211
+      ],
+      "distance_to_gt": 1.1160979977064873,
+      "gt_x": 206.64705882352942,
+      "gt_y": 209.05882352941177,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU451.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU451.png",
+      "name": "XDU451",
+      "prompt_x": 207.0,
+      "prompt_y": 208.0,
+      "score": 0.828368604183197
+    },
+    {
+      "area": 31,
+      "bbox": [
+        464,
+        241,
+        471,
+        248
+      ],
+      "distance_to_gt": 0.4041923898755262,
+      "gt_x": 244.3548387096774,
+      "gt_y": 466.80645161290323,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU455.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU455.png",
+      "name": "XDU455",
+      "prompt_x": 244.0,
+      "prompt_y": 467.0,
+      "score": 0.9999774694442749
+    },
+    {
+      "area": 49,
+      "bbox": [
+        354,
+        313,
+        361,
+        322
+      ],
+      "distance_to_gt": 1.0,
+      "gt_x": 317.0,
+      "gt_y": 357.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU459.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU459.png",
+      "name": "XDU459",
+      "prompt_x": 316.0,
+      "prompt_y": 357.0,
+      "score": 0.7969342470169067
+    },
+    {
+      "area": 17,
+      "bbox": [
+        469,
+        35,
+        472,
+        41
+      ],
+      "distance_to_gt": 0.6497271186580758,
+      "gt_x": 37.35294117647059,
+      "gt_y": 469.94117647058823,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU46.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU46.png",
+      "name": "XDU46",
+      "prompt_x": 38.0,
+      "prompt_y": 470.0,
+      "score": 0.9036593437194824
+    },
+    {
+      "area": 60,
+      "bbox": [
+        504,
+        353,
+        511,
+        363
+      ],
+      "distance_to_gt": 0.6808899405271762,
+      "gt_x": 357.75,
+      "gt_y": 507.3666666666667,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU46.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU46.png",
+      "name": "XDU46",
+      "prompt_x": 358.0,
+      "prompt_y": 508.0,
+      "score": 0.9705104231834412
+    },
+    {
+      "area": 24,
+      "bbox": [
+        419,
+        268,
+        424,
+        276
+      ],
+      "distance_to_gt": 0.9166666666666856,
+      "gt_x": 271.9166666666667,
+      "gt_y": 421.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU463.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU463.png",
+      "name": "XDU463",
+      "prompt_x": 271.0,
+      "prompt_y": 421.0,
+      "score": 0.9999344348907471
+    },
+    {
+      "area": 24,
+      "bbox": [
+        304,
+        372,
+        310,
+        380
+      ],
+      "distance_to_gt": 0.38414768572053287,
+      "gt_x": 376.0833333333333,
+      "gt_y": 306.375,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU48.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU48.png",
+      "name": "XDU48",
+      "prompt_x": 376.0,
+      "prompt_y": 306.0,
+      "score": 0.9998691082000732
+    },
+    {
+      "area": 44,
+      "bbox": [
+        123,
+        242,
+        129,
+        252
+      ],
+      "distance_to_gt": 0.6684291440842073,
+      "gt_x": 246.45454545454547,
+      "gt_y": 125.61363636363636,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU482.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU482.png",
+      "name": "XDU482",
+      "prompt_x": 247.0,
+      "prompt_y": 126.0,
+      "score": 0.9999905824661255
+    },
+    {
+      "area": 30,
+      "bbox": [
+        268,
+        258,
+        275,
+        264
+      ],
+      "distance_to_gt": 0.4055175020198583,
+      "gt_x": 260.6,
+      "gt_y": 270.93333333333334,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU482.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU482.png",
+      "name": "XDU482",
+      "prompt_x": 261.0,
+      "prompt_y": 271.0,
+      "score": 0.9509207010269165
+    },
+    {
+      "area": 45,
+      "bbox": [
+        351,
+        338,
+        368,
+        343
+      ],
+      "distance_to_gt": 0.7090247170464198,
+      "gt_x": 340.6,
+      "gt_y": 359.3777777777778,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU485.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU485.png",
+      "name": "XDU485",
+      "prompt_x": 340.0,
+      "prompt_y": 359.0,
+      "score": 0.9987619519233704
+    },
+    {
+      "area": 48,
+      "bbox": [
+        308,
+        308,
+        321,
+        318
+      ],
+      "distance_to_gt": 0.3467357703561251,
+      "gt_x": 311.8125,
+      "gt_y": 313.7083333333333,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU489.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU489.png",
+      "name": "XDU489",
+      "prompt_x": 312.0,
+      "prompt_y": 314.0,
+      "score": 0.9999104738235474
+    },
+    {
+      "area": 40,
+      "bbox": [
+        366,
+        284,
+        378,
+        289
+      ],
+      "distance_to_gt": 0.2549509756796415,
+      "gt_x": 285.95,
+      "gt_y": 371.75,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU489.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU489.png",
+      "name": "XDU489",
+      "prompt_x": 286.0,
+      "prompt_y": 372.0,
+      "score": 0.9574764370918274
+    },
+    {
+      "area": 63,
+      "bbox": [
+        99,
+        314,
+        110,
+        324
+      ],
+      "distance_to_gt": 0.921182103399822,
+      "gt_x": 318.92063492063494,
+      "gt_y": 104.03174603174604,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU49.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU49.png",
+      "name": "XDU49",
+      "prompt_x": 318.0,
+      "prompt_y": 104.0,
+      "score": 0.9990341663360596
+    },
+    {
+      "area": 54,
+      "bbox": [
+        127,
+        384,
+        137,
+        394
+      ],
+      "distance_to_gt": 0.6288121054203613,
+      "gt_x": 388.85185185185185,
+      "gt_y": 131.38888888888889,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU492.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU492.png",
+      "name": "XDU492",
+      "prompt_x": 389.0,
+      "prompt_y": 132.0,
+      "score": 0.9999821186065674
+    },
+    {
+      "area": 62,
+      "bbox": [
+        194,
+        403,
+        208,
+        409
+      ],
+      "distance_to_gt": 0.9377059260483104,
+      "gt_x": 405.5806451612903,
+      "gt_y": 200.16129032258064,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU492.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU492.png",
+      "name": "XDU492",
+      "prompt_x": 406.0,
+      "prompt_y": 201.0,
+      "score": 0.9572309255599976
+    },
+    {
+      "area": 9,
+      "bbox": [
+        164,
+        425,
+        167,
+        428
+      ],
+      "distance_to_gt": 0.0,
+      "gt_x": 426.0,
+      "gt_y": 165.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU5.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU5.png",
+      "name": "XDU5",
+      "prompt_x": 426.0,
+      "prompt_y": 165.0,
+      "score": 0.9999333620071411
+    },
+    {
+      "area": 14,
+      "bbox": [
+        222,
+        208,
+        226,
+        212
+      ],
+      "distance_to_gt": 0.45736601695948725,
+      "gt_x": 209.28571428571428,
+      "gt_y": 223.35714285714286,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU5.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU5.png",
+      "name": "XDU5",
+      "prompt_x": 209.0,
+      "prompt_y": 223.0,
+      "score": 0.9789882898330688
+    },
+    {
+      "area": 26,
+      "bbox": [
+        285,
+        85,
+        290,
+        92
+      ],
+      "distance_to_gt": 0.13867504905631517,
+      "gt_x": 88.11538461538461,
+      "gt_y": 286.9230769230769,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU50.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU50.png",
+      "name": "XDU50",
+      "prompt_x": 88.0,
+      "prompt_y": 287.0,
+      "score": 0.9999942779541016
+    },
+    {
+      "area": 21,
+      "bbox": [
+        326,
+        160,
+        331,
+        167
+      ],
+      "distance_to_gt": 0.8151067985058773,
+      "gt_x": 162.9047619047619,
+      "gt_y": 327.8095238095238,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU501.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU501.png",
+      "name": "XDU501",
+      "prompt_x": 163.0,
+      "prompt_y": 327.0,
+      "score": 0.5608212351799011
+    },
+    {
+      "area": 97,
+      "bbox": [
+        16,
+        88,
+        25,
+        103
+      ],
+      "distance_to_gt": 0.7250289060831857,
+      "gt_x": 94.37113402061856,
+      "gt_y": 19.63917525773196,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU504.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU504.png",
+      "name": "XDU504",
+      "prompt_x": 95.0,
+      "prompt_y": 20.0,
+      "score": 0.9999995231628418
+    },
+    {
+      "area": 119,
+      "bbox": [
+        19,
+        141,
+        31,
+        158
+      ],
+      "distance_to_gt": 0.1367968117319298,
+      "gt_x": 148.8655462184874,
+      "gt_y": 23.974789915966387,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU504.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU504.png",
+      "name": "XDU504",
+      "prompt_x": 149.0,
+      "prompt_y": 24.0,
+      "score": 0.5180339217185974
+    },
+    {
+      "area": 36,
+      "bbox": [
+        152,
+        164,
+        159,
+        170
+      ],
+      "distance_to_gt": 1.0307764064044151,
+      "gt_x": 166.25,
+      "gt_y": 155.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU505.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU505.png",
+      "name": "XDU505",
+      "prompt_x": 166.0,
+      "prompt_y": 156.0,
+      "score": 0.7741695642471313
+    },
+    {
+      "area": 146,
+      "bbox": [
+        243,
+        344,
+        253,
+        364
+      ],
+      "distance_to_gt": 1.5032647276622937,
+      "gt_x": 353.43150684931504,
+      "gt_y": 247.54109589041096,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU505.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU505.png",
+      "name": "XDU505",
+      "prompt_x": 352.0,
+      "prompt_y": 248.0,
+      "score": 0.9999998807907104
+    },
+    {
+      "area": 34,
+      "bbox": [
+        93,
+        353,
+        102,
+        364
+      ],
+      "distance_to_gt": 0.7831486444526019,
+      "gt_x": 359.44117647058823,
+      "gt_y": 96.6470588235294,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU516.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU516.png",
+      "name": "XDU516",
+      "prompt_x": 359.0,
+      "prompt_y": 96.0,
+      "score": 0.9999756813049316
+    },
+    {
+      "area": 66,
+      "bbox": [
+        156,
+        374,
+        167,
+        380
+      ],
+      "distance_to_gt": 0.5,
+      "gt_x": 376.5,
+      "gt_y": 161.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU516.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU516.png",
+      "name": "XDU516",
+      "prompt_x": 376.0,
+      "prompt_y": 161.0,
+      "score": 0.9744011759757996
+    },
+    {
+      "area": 10,
+      "bbox": [
+        381,
+        98,
+        386,
+        101
+      ],
+      "distance_to_gt": 0.22360679774999168,
+      "gt_x": 99.2,
+      "gt_y": 382.9,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU517.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU517.png",
+      "name": "XDU517",
+      "prompt_x": 99.0,
+      "prompt_y": 383.0,
+      "score": 0.9999912977218628
+    },
+    {
+      "area": 16,
+      "bbox": [
+        378,
+        324,
+        382,
+        328
+      ],
+      "distance_to_gt": 0.7071067811865476,
+      "gt_x": 325.5,
+      "gt_y": 379.5,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU523.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU523.png",
+      "name": "XDU523",
+      "prompt_x": 325.0,
+      "prompt_y": 380.0,
+      "score": 0.9999057054519653
+    },
+    {
+      "area": 12,
+      "bbox": [
+        393,
+        324,
+        396,
+        328
+      ],
+      "distance_to_gt": 0.5,
+      "gt_x": 325.5,
+      "gt_y": 394.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU523.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU523.png",
+      "name": "XDU523",
+      "prompt_x": 325.0,
+      "prompt_y": 394.0,
+      "score": 0.9822971820831299
+    },
+    {
+      "area": 12,
+      "bbox": [
+        287,
+        352,
+        291,
+        355
+      ],
+      "distance_to_gt": 1.118033988749895,
+      "gt_x": 353.0,
+      "gt_y": 288.5,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU525.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU525.png",
+      "name": "XDU525",
+      "prompt_x": 352.0,
+      "prompt_y": 288.0,
+      "score": 0.9999970197677612
+    },
+    {
+      "area": 24,
+      "bbox": [
+        201,
+        151,
+        209,
+        155
+      ],
+      "distance_to_gt": 0.5432668671002236,
+      "gt_x": 152.29166666666666,
+      "gt_y": 204.45833333333334,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU527.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU527.png",
+      "name": "XDU527",
+      "prompt_x": 152.0,
+      "prompt_y": 204.0,
+      "score": 0.9999730587005615
+    },
+    {
+      "area": 29,
+      "bbox": [
+        242,
+        247,
+        249,
+        253
+      ],
+      "distance_to_gt": 1.1189641889371102,
+      "gt_x": 249.6206896551724,
+      "gt_y": 245.06896551724137,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU54.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU54.png",
+      "name": "XDU54",
+      "prompt_x": 249.0,
+      "prompt_y": 246.0,
+      "score": 0.9999864101409912
+    },
+    {
+      "area": 33,
+      "bbox": [
+        268,
+        203,
+        275,
+        210
+      ],
+      "distance_to_gt": 0.3347079096117421,
+      "gt_x": 206.33333333333334,
+      "gt_y": 271.030303030303,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU54.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU54.png",
+      "name": "XDU54",
+      "prompt_x": 206.0,
+      "prompt_y": 271.0,
+      "score": 0.9427223205566406
+    },
+    {
+      "area": 58,
+      "bbox": [
+        100,
+        236,
+        113,
+        242
+      ],
+      "distance_to_gt": 1.9320348394088676,
+      "gt_x": 238.55172413793105,
+      "gt_y": 105.87931034482759,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU546.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU546.png",
+      "name": "XDU546",
+      "prompt_x": 239.0,
+      "prompt_y": 104.0,
+      "score": 0.9021261930465698
+    },
+    {
+      "area": 49,
+      "bbox": [
+        136,
+        286,
+        144,
+        296
+      ],
+      "distance_to_gt": 0.569237782897193,
+      "gt_x": 290.85714285714283,
+      "gt_y": 139.44897959183675,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU557.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU557.png",
+      "name": "XDU557",
+      "prompt_x": 291.0,
+      "prompt_y": 140.0,
+      "score": 0.999970555305481
+    },
+    {
+      "area": 64,
+      "bbox": [
+        177,
+        315,
+        188,
+        324
+      ],
+      "distance_to_gt": 0.940749576468148,
+      "gt_x": 319.375,
+      "gt_y": 182.296875,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU557.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU557.png",
+      "name": "XDU557",
+      "prompt_x": 320.0,
+      "prompt_y": 183.0,
+      "score": 0.6561671495437622
+    },
+    {
+      "area": 37,
+      "bbox": [
+        306,
+        404,
+        314,
+        413
+      ],
+      "distance_to_gt": 0.5571764358942632,
+      "gt_x": 408.13513513513516,
+      "gt_y": 309.4594594594595,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU558.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU558.png",
+      "name": "XDU558",
+      "prompt_x": 408.0,
+      "prompt_y": 310.0,
+      "score": 0.9501570463180542
+    },
+    {
+      "area": 39,
+      "bbox": [
+        357,
+        410,
+        369,
+        415
+      ],
+      "distance_to_gt": 0.5784879062911835,
+      "gt_x": 411.87179487179486,
+      "gt_y": 362.43589743589746,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU558.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU558.png",
+      "name": "XDU558",
+      "prompt_x": 412.0,
+      "prompt_y": 363.0,
+      "score": 0.9998915195465088
+    },
+    {
+      "area": 20,
+      "bbox": [
+        266,
+        238,
+        272,
+        244
+      ],
+      "distance_to_gt": 0.7433034373659336,
+      "gt_x": 240.5,
+      "gt_y": 268.55,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU56.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU56.png",
+      "name": "XDU56",
+      "prompt_x": 240.0,
+      "prompt_y": 268.0,
+      "score": 0.9999924898147583
+    },
+    {
+      "area": 19,
+      "bbox": [
+        152,
+        164,
+        157,
+        170
+      ],
+      "distance_to_gt": 0.7021928454803256,
+      "gt_x": 166.1578947368421,
+      "gt_y": 153.68421052631578,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU563.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU563.png",
+      "name": "XDU563",
+      "prompt_x": 166.0,
+      "prompt_y": 153.0,
+      "score": 0.9999779462814331
+    },
+    {
+      "area": 114,
+      "bbox": [
+        201,
+        216,
+        218,
+        224
+      ],
+      "distance_to_gt": 0.8006038041476968,
+      "gt_x": 219.4298245614035,
+      "gt_y": 209.32456140350877,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU567.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU567.png",
+      "name": "XDU567",
+      "prompt_x": 219.0,
+      "prompt_y": 210.0,
+      "score": 0.9542108178138733
+    },
+    {
+      "area": 12,
+      "bbox": [
+        308,
+        174,
+        312,
+        179
+      ],
+      "distance_to_gt": 0.6718548123582113,
+      "gt_x": 175.58333333333334,
+      "gt_y": 309.6666666666667,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU570.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU570.png",
+      "name": "XDU570",
+      "prompt_x": 175.0,
+      "prompt_y": 310.0,
+      "score": 0.9999891519546509
+    },
+    {
+      "area": 241,
+      "bbox": [
+        77,
+        122,
+        95,
+        143
+      ],
+      "distance_to_gt": 0.32295914891768296,
+      "gt_x": 132.11203319502076,
+      "gt_y": 85.69709543568464,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU578.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU578.png",
+      "name": "XDU578",
+      "prompt_x": 132.0,
+      "prompt_y": 86.0,
+      "score": 0.9986190795898438
+    },
+    {
+      "area": 169,
+      "bbox": [
+        84,
+        65,
+        95,
+        86
+      ],
+      "distance_to_gt": 0.6095823410993455,
+      "gt_x": 75.3905325443787,
+      "gt_y": 88.98816568047337,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU578.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU578.png",
+      "name": "XDU578",
+      "prompt_x": 76.0,
+      "prompt_y": 89.0,
+      "score": 0.6004770994186401
+    },
+    {
+      "area": 180,
+      "bbox": [
+        99,
+        45,
+        113,
+        64
+      ],
+      "distance_to_gt": 0.8703802205904386,
+      "gt_x": 54.794444444444444,
+      "gt_y": 105.64444444444445,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU578.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU578.png",
+      "name": "XDU578",
+      "prompt_x": 54.0,
+      "prompt_y": 106.0,
+      "score": 0.9108223915100098
+    },
+    {
+      "area": 49,
+      "bbox": [
+        208,
+        320,
+        217,
+        332
+      ],
+      "distance_to_gt": 0.31943828249996087,
+      "gt_x": 325.2857142857143,
+      "gt_y": 212.14285714285714,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU589.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU589.png",
+      "name": "XDU589",
+      "prompt_x": 325.0,
+      "prompt_y": 212.0,
+      "score": 0.9999887943267822
+    },
+    {
+      "area": 16,
+      "bbox": [
+        273,
+        350,
+        276,
+        357
+      ],
+      "distance_to_gt": 1.4252192813739224,
+      "gt_x": 353.125,
+      "gt_y": 274.125,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU596.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU596.png",
+      "name": "XDU596",
+      "prompt_x": 352.0,
+      "prompt_y": 275.0,
+      "score": 0.8446786403656006
+    },
+    {
+      "area": 24,
+      "bbox": [
+        275,
+        374,
+        281,
+        381
+      ],
+      "distance_to_gt": 0.2667968432263657,
+      "gt_x": 376.8333333333333,
+      "gt_y": 278.2083333333333,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU596.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU596.png",
+      "name": "XDU596",
+      "prompt_x": 377.0,
+      "prompt_y": 278.0,
+      "score": 0.9303922653198242
+    },
+    {
+      "area": 23,
+      "bbox": [
+        278,
+        369,
+        283,
+        376
+      ],
+      "distance_to_gt": 0.6636668488032171,
+      "gt_x": 372.5652173913044,
+      "gt_y": 280.6521739130435,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU597.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU597.png",
+      "name": "XDU597",
+      "prompt_x": 372.0,
+      "prompt_y": 281.0,
+      "score": 0.7580347061157227
+    },
+    {
+      "area": 41,
+      "bbox": [
+        308,
+        472,
+        314,
+        480
+      ],
+      "distance_to_gt": 1.2493900951088486,
+      "gt_x": 475.9756097560976,
+      "gt_y": 310.219512195122,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU597.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU597.png",
+      "name": "XDU597",
+      "prompt_x": 475.0,
+      "prompt_y": 311.0,
+      "score": 0.7093029022216797
+    },
+    {
+      "area": 35,
+      "bbox": [
+        343,
+        487,
+        349,
+        495
+      ],
+      "distance_to_gt": 0.6791351042288489,
+      "gt_x": 490.62857142857143,
+      "gt_y": 345.25714285714287,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU597.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU597.png",
+      "name": "XDU597",
+      "prompt_x": 490.0,
+      "prompt_y": 345.0,
+      "score": 0.9998618364334106
+    },
+    {
+      "area": 26,
+      "bbox": [
+        276,
+        255,
+        282,
+        261
+      ],
+      "distance_to_gt": 0.6617173282340401,
+      "gt_x": 257.38461538461536,
+      "gt_y": 278.46153846153845,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU614.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU614.png",
+      "name": "XDU614",
+      "prompt_x": 257.0,
+      "prompt_y": 279.0,
+      "score": 0.9999949932098389
+    },
+    {
+      "area": 53,
+      "bbox": [
+        345,
+        174,
+        355,
+        186
+      ],
+      "distance_to_gt": 1.1441183347770258,
+      "gt_x": 179.11320754716982,
+      "gt_y": 349.7358490566038,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU620.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU620.png",
+      "name": "XDU620",
+      "prompt_x": 178.0,
+      "prompt_y": 350.0,
+      "score": 0.999963641166687
+    },
+    {
+      "area": 32,
+      "bbox": [
+        300,
+        466,
+        304,
+        477
+      ],
+      "distance_to_gt": 1.326193448370184,
+      "gt_x": 470.75,
+      "gt_y": 301.90625,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU63.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU63.png",
+      "name": "XDU63",
+      "prompt_x": 470.0,
+      "prompt_y": 303.0,
+      "score": 0.9998691082000732
+    },
+    {
+      "area": 20,
+      "bbox": [
+        91,
+        408,
+        97,
+        413
+      ],
+      "distance_to_gt": 1.280624847486577,
+      "gt_x": 409.8,
+      "gt_y": 94.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU637.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU637.png",
+      "name": "XDU637",
+      "prompt_x": 409.0,
+      "prompt_y": 93.0,
+      "score": 0.9336371421813965
+    },
+    {
+      "area": 25,
+      "bbox": [
+        170,
+        256,
+        176,
+        262
+      ],
+      "distance_to_gt": 0.7472616676907721,
+      "gt_x": 258.2,
+      "gt_y": 172.28,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU637.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU637.png",
+      "name": "XDU637",
+      "prompt_x": 258.0,
+      "prompt_y": 173.0,
+      "score": 0.9997099041938782
+    },
+    {
+      "area": 19,
+      "bbox": [
+        252,
+        454,
+        257,
+        460
+      ],
+      "distance_to_gt": 0.4527539614232859,
+      "gt_x": 456.36842105263156,
+      "gt_y": 253.73684210526315,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU637.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU637.png",
+      "name": "XDU637",
+      "prompt_x": 456.0,
+      "prompt_y": 254.0,
+      "score": 0.9653399586677551
+    },
+    {
+      "area": 103,
+      "bbox": [
+        233,
+        282,
+        243,
+        295
+      ],
+      "distance_to_gt": 0.21709397839803735,
+      "gt_x": 288.09708737864077,
+      "gt_y": 236.80582524271844,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU648.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU648.png",
+      "name": "XDU648",
+      "prompt_x": 288.0,
+      "prompt_y": 237.0,
+      "score": 0.9775218367576599
+    },
+    {
+      "area": 25,
+      "bbox": [
+        323,
+        149,
+        328,
+        157
+      ],
+      "distance_to_gt": 0.0894427190999738,
+      "gt_x": 152.96,
+      "gt_y": 325.08,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU657.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU657.png",
+      "name": "XDU657",
+      "prompt_x": 153.0,
+      "prompt_y": 325.0,
+      "score": 0.9998812675476074
+    },
+    {
+      "area": 33,
+      "bbox": [
+        159,
+        329,
+        168,
+        336
+      ],
+      "distance_to_gt": 0.5562896894147377,
+      "gt_x": 332.4848484848485,
+      "gt_y": 162.72727272727272,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU662.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU662.png",
+      "name": "XDU662",
+      "prompt_x": 332.0,
+      "prompt_y": 163.0,
+      "score": 0.9999767541885376
+    },
+    {
+      "area": 61,
+      "bbox": [
+        84,
+        236,
+        89,
+        254
+      ],
+      "distance_to_gt": 1.0235076248385437,
+      "gt_x": 244.13114754098362,
+      "gt_y": 86.54098360655738,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU663.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU663.png",
+      "name": "XDU663",
+      "prompt_x": 245.0,
+      "prompt_y": 86.0,
+      "score": 0.6170786023139954
+    },
+    {
+      "area": 48,
+      "bbox": [
+        275,
+        346,
+        282,
+        358
+      ],
+      "distance_to_gt": 1.93761200393107,
+      "gt_x": 351.9791666666667,
+      "gt_y": 278.0625,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU667.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU667.png",
+      "name": "XDU667",
+      "prompt_x": 352.0,
+      "prompt_y": 280.0,
+      "score": 0.9998315572738647
+    },
+    {
+      "area": 26,
+      "bbox": [
+        78,
+        324,
+        84,
+        331
+      ],
+      "distance_to_gt": 0.16317848796614334,
+      "gt_x": 327.11538461538464,
+      "gt_y": 80.11538461538461,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU67.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU67.png",
+      "name": "XDU67",
+      "prompt_x": 327.0,
+      "prompt_y": 80.0,
+      "score": 0.9920128583908081
+    },
+    {
+      "area": 16,
+      "bbox": [
+        293,
+        148,
+        298,
+        154
+      ],
+      "distance_to_gt": 1.194060823408925,
+      "gt_x": 150.125,
+      "gt_y": 295.1875,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU672.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU672.png",
+      "name": "XDU672",
+      "prompt_x": 151.0,
+      "prompt_y": 296.0,
+      "score": 0.6024061441421509
+    },
+    {
+      "area": 21,
+      "bbox": [
+        299,
+        87,
+        304,
+        93
+      ],
+      "distance_to_gt": 0.49026810195177745,
+      "gt_x": 89.76190476190476,
+      "gt_y": 301.42857142857144,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU672.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU672.png",
+      "name": "XDU672",
+      "prompt_x": 90.0,
+      "prompt_y": 301.0,
+      "score": 0.99998939037323
+    },
+    {
+      "area": 9,
+      "bbox": [
+        347,
+        259,
+        350,
+        263
+      ],
+      "distance_to_gt": 0.9162456945817283,
+      "gt_x": 260.1111111111111,
+      "gt_y": 347.77777777777777,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU673.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU673.png",
+      "name": "XDU673",
+      "prompt_x": 261.0,
+      "prompt_y": 348.0,
+      "score": 0.9999814033508301
+    },
+    {
+      "area": 12,
+      "bbox": [
+        323,
+        95,
+        327,
+        99
+      ],
+      "distance_to_gt": 0.7071067811865476,
+      "gt_x": 96.5,
+      "gt_y": 324.5,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU674.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU674.png",
+      "name": "XDU674",
+      "prompt_x": 97.0,
+      "prompt_y": 325.0,
+      "score": 0.9999904632568359
+    },
+    {
+      "area": 11,
+      "bbox": [
+        323,
+        182,
+        327,
+        185
+      ],
+      "distance_to_gt": 0.37482778414707074,
+      "gt_x": 182.9090909090909,
+      "gt_y": 324.3636363636364,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU674.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU674.png",
+      "name": "XDU674",
+      "prompt_x": 183.0,
+      "prompt_y": 324.0,
+      "score": 0.8488365411758423
+    },
+    {
+      "area": 53,
+      "bbox": [
+        168,
+        162,
+        180,
+        168
+      ],
+      "distance_to_gt": 0.7661864341225262,
+      "gt_x": 164.24528301886792,
+      "gt_y": 173.8679245283019,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU682.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU682.png",
+      "name": "XDU682",
+      "prompt_x": 165.0,
+      "prompt_y": 174.0,
+      "score": 0.8563480973243713
+    },
+    {
+      "area": 17,
+      "bbox": [
+        302,
+        140,
+        307,
+        145
+      ],
+      "distance_to_gt": 0.8000865005138408,
+      "gt_x": 142.23529411764707,
+      "gt_y": 303.7647058823529,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU685.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU685.png",
+      "name": "XDU685",
+      "prompt_x": 143.0,
+      "prompt_y": 304.0,
+      "score": 0.9999644756317139
+    },
+    {
+      "area": 12,
+      "bbox": [
+        223,
+        246,
+        226,
+        250
+      ],
+      "distance_to_gt": 1.118033988749895,
+      "gt_x": 247.5,
+      "gt_y": 224.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU692.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU692.png",
+      "name": "XDU692",
+      "prompt_x": 248.0,
+      "prompt_y": 225.0,
+      "score": 0.4967188239097595
+    },
+    {
+      "area": 17,
+      "bbox": [
+        340,
+        340,
+        344,
+        345
+      ],
+      "distance_to_gt": 1.6269784336399338,
+      "gt_x": 341.94117647058823,
+      "gt_y": 341.7647058823529,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU694.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU694.png",
+      "name": "XDU694",
+      "prompt_x": 343.0,
+      "prompt_y": 343.0,
+      "score": 0.5926249027252197
+    },
+    {
+      "area": 20,
+      "bbox": [
+        350,
+        194,
+        355,
+        199
+      ],
+      "distance_to_gt": 0.40311288741490636,
+      "gt_x": 196.05,
+      "gt_y": 352.4,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU694.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU694.png",
+      "name": "XDU694",
+      "prompt_x": 196.0,
+      "prompt_y": 352.0,
+      "score": 0.9999758005142212
+    },
+    {
+      "area": 80,
+      "bbox": [
+        279,
+        426,
+        293,
+        440
+      ],
+      "distance_to_gt": 0.6094310871624506,
+      "gt_x": 432.2625,
+      "gt_y": 286.55,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU697.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU697.png",
+      "name": "XDU697",
+      "prompt_x": 432.0,
+      "prompt_y": 286.0,
+      "score": 0.709782063961029
+    },
+    {
+      "area": 7,
+      "bbox": [
+        270,
+        360,
+        272,
+        366
+      ],
+      "distance_to_gt": 0.9583148474998954,
+      "gt_x": 362.85714285714283,
+      "gt_y": 270.57142857142856,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU698.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU698.png",
+      "name": "XDU698",
+      "prompt_x": 362.0,
+      "prompt_y": 271.0,
+      "score": 0.9999681711196899
+    },
+    {
+      "area": 40,
+      "bbox": [
+        209,
+        402,
+        217,
+        408
+      ],
+      "distance_to_gt": 1.5002083188677588,
+      "gt_x": 404.4,
+      "gt_y": 212.625,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU704.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU704.png",
+      "name": "XDU704",
+      "prompt_x": 405.0,
+      "prompt_y": 214.0,
+      "score": 0.583561360836029
+    },
+    {
+      "area": 30,
+      "bbox": [
+        329,
+        445,
+        336,
+        454
+      ],
+      "distance_to_gt": 0.507718207057565,
+      "gt_x": 449.46666666666664,
+      "gt_y": 332.2,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU704.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU704.png",
+      "name": "XDU704",
+      "prompt_x": 449.0,
+      "prompt_y": 332.0,
+      "score": 0.9999845027923584
+    },
+    {
+      "area": 55,
+      "bbox": [
+        203,
+        359,
+        215,
+        366
+      ],
+      "distance_to_gt": 0.5529784118452925,
+      "gt_x": 362.6181818181818,
+      "gt_y": 207.6,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU708.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU708.png",
+      "name": "XDU708",
+      "prompt_x": 363.0,
+      "prompt_y": 208.0,
+      "score": 0.9999948740005493
+    },
+    {
+      "area": 5,
+      "bbox": [
+        52,
+        197,
+        54,
+        201
+      ],
+      "distance_to_gt": 0.848528137423854,
+      "gt_x": 198.4,
+      "gt_y": 52.6,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU711.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU711.png",
+      "name": "XDU711",
+      "prompt_x": 199.0,
+      "prompt_y": 52.0,
+      "score": 0.6979560256004333
+    },
+    {
+      "area": 5,
+      "bbox": [
+        152,
+        367,
+        155,
+        370
+      ],
+      "distance_to_gt": 0.0,
+      "gt_x": 368.0,
+      "gt_y": 153.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU711.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU711.png",
+      "name": "XDU711",
+      "prompt_x": 368.0,
+      "prompt_y": 153.0,
+      "score": 0.9833834767341614
+    },
+    {
+      "area": 8,
+      "bbox": [
+        171,
+        200,
+        176,
+        204
+      ],
+      "distance_to_gt": 0.5,
+      "gt_x": 201.5,
+      "gt_y": 173.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU711.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU711.png",
+      "name": "XDU711",
+      "prompt_x": 201.0,
+      "prompt_y": 173.0,
+      "score": 0.9973108172416687
+    },
+    {
+      "area": 5,
+      "bbox": [
+        246,
+        352,
+        249,
+        355
+      ],
+      "distance_to_gt": 0.8000000000000114,
+      "gt_x": 352.8,
+      "gt_y": 247.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU711.png",
+      "instance_id": 3,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU711.png",
+      "name": "XDU711",
+      "prompt_x": 352.0,
+      "prompt_y": 247.0,
+      "score": 0.8454267382621765
+    },
+    {
+      "area": 30,
+      "bbox": [
+        190,
+        411,
+        195,
+        420
+      ],
+      "distance_to_gt": 0.3431876713662525,
+      "gt_x": 414.8333333333333,
+      "gt_y": 191.7,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU715.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU715.png",
+      "name": "XDU715",
+      "prompt_x": 415.0,
+      "prompt_y": 192.0,
+      "score": 0.9999912977218628
+    },
+    {
+      "area": 10,
+      "bbox": [
+        156,
+        438,
+        160,
+        442
+      ],
+      "distance_to_gt": 0.781024967590683,
+      "gt_x": 439.6,
+      "gt_y": 157.5,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU733.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU733.png",
+      "name": "XDU733",
+      "prompt_x": 439.0,
+      "prompt_y": 158.0,
+      "score": 0.9544002413749695
+    },
+    {
+      "area": 47,
+      "bbox": [
+        150,
+        204,
+        156,
+        215
+      ],
+      "distance_to_gt": 0.07671385692477646,
+      "gt_x": 210.06382978723406,
+      "gt_y": 152.95744680851064,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU743.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU743.png",
+      "name": "XDU743",
+      "prompt_x": 210.0,
+      "prompt_y": 153.0,
+      "score": 0.9762469530105591
+    },
+    {
+      "area": 16,
+      "bbox": [
+        154,
+        156,
+        157,
+        164
+      ],
+      "distance_to_gt": 1.0174262872562316,
+      "gt_x": 159.25,
+      "gt_y": 154.6875,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU743.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU743.png",
+      "name": "XDU743",
+      "prompt_x": 160.0,
+      "prompt_y": 154.0,
+      "score": 0.5219125747680664
+    },
+    {
+      "area": 67,
+      "bbox": [
+        250,
+        250,
+        256,
+        267
+      ],
+      "distance_to_gt": 0.662962158642153,
+      "gt_x": 258.43283582089555,
+      "gt_y": 252.65671641791045,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU745.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU745.png",
+      "name": "XDU745",
+      "prompt_x": 259.0,
+      "prompt_y": 253.0,
+      "score": 0.9997429251670837
+    },
+    {
+      "area": 7,
+      "bbox": [
+        409,
+        149,
+        412,
+        152
+      ],
+      "distance_to_gt": 0.7284313590846907,
+      "gt_x": 150.14285714285714,
+      "gt_y": 409.7142857142857,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU747.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU747.png",
+      "name": "XDU747",
+      "prompt_x": 150.0,
+      "prompt_y": 409.0,
+      "score": 0.6723204851150513
+    },
+    {
+      "area": 16,
+      "bbox": [
+        266,
+        252,
+        271,
+        256
+      ],
+      "distance_to_gt": 0.5,
+      "gt_x": 253.5,
+      "gt_y": 268.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU75.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU75.png",
+      "name": "XDU75",
+      "prompt_x": 254.0,
+      "prompt_y": 268.0,
+      "score": 0.9859350919723511
+    },
+    {
+      "area": 23,
+      "bbox": [
+        47,
+        161,
+        54,
+        167
+      ],
+      "distance_to_gt": 0.40084975901273223,
+      "gt_x": 163.91304347826087,
+      "gt_y": 50.391304347826086,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU753.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU753.png",
+      "name": "XDU753",
+      "prompt_x": 164.0,
+      "prompt_y": 50.0,
+      "score": 0.9998965263366699
+    },
+    {
+      "area": 6,
+      "bbox": [
+        202,
+        235,
+        205,
+        239
+      ],
+      "distance_to_gt": 0.8333333333333257,
+      "gt_x": 236.5,
+      "gt_y": 202.66666666666666,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU758.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU758.png",
+      "name": "XDU758",
+      "prompt_x": 236.0,
+      "prompt_y": 202.0,
+      "score": 0.999948263168335
+    },
+    {
+      "area": 32,
+      "bbox": [
+        184,
+        181,
+        193,
+        193
+      ],
+      "distance_to_gt": 0.2829807855667943,
+      "gt_x": 186.28125,
+      "gt_y": 187.96875,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU762.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU762.png",
+      "name": "XDU762",
+      "prompt_x": 186.0,
+      "prompt_y": 188.0,
+      "score": 0.4398075044155121
+    },
+    {
+      "area": 30,
+      "bbox": [
+        204,
+        236,
+        213,
+        243
+      ],
+      "distance_to_gt": 0.29814239699998046,
+      "gt_x": 238.73333333333332,
+      "gt_y": 208.86666666666667,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU762.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU762.png",
+      "name": "XDU762",
+      "prompt_x": 239.0,
+      "prompt_y": 209.0,
+      "score": 0.9999804496765137
+    },
+    {
+      "area": 17,
+      "bbox": [
+        122,
+        468,
+        127,
+        474
+      ],
+      "distance_to_gt": 1.291441082358828,
+      "gt_x": 470.3529411764706,
+      "gt_y": 123.88235294117646,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU775.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU775.png",
+      "name": "XDU775",
+      "prompt_x": 471.0,
+      "prompt_y": 125.0,
+      "score": 0.999984860420227
+    },
+    {
+      "area": 24,
+      "bbox": [
+        101,
+        342,
+        105,
+        350
+      ],
+      "distance_to_gt": 0.9446486707295493,
+      "gt_x": 346.375,
+      "gt_y": 102.29166666666667,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU777.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU777.png",
+      "name": "XDU777",
+      "prompt_x": 347.0,
+      "prompt_y": 103.0,
+      "score": 0.9998732805252075
+    },
+    {
+      "area": 19,
+      "bbox": [
+        157,
+        408,
+        161,
+        417
+      ],
+      "distance_to_gt": 0.631578947368439,
+      "gt_x": 412.36842105263156,
+      "gt_y": 159.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU781.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU781.png",
+      "name": "XDU781",
+      "prompt_x": 413.0,
+      "prompt_y": 159.0,
+      "score": 0.9999531507492065
+    },
+    {
+      "area": 5,
+      "bbox": [
+        414,
+        170,
+        416,
+        174
+      ],
+      "distance_to_gt": 1.2165525060596307,
+      "gt_x": 171.2,
+      "gt_y": 414.2,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU785.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU785.png",
+      "name": "XDU785",
+      "prompt_x": 170.0,
+      "prompt_y": 414.0,
+      "score": 0.9999209642410278
+    },
+    {
+      "area": 13,
+      "bbox": [
+        40,
+        240,
+        46,
+        243
+      ],
+      "distance_to_gt": 0.9358096200458906,
+      "gt_x": 241.07692307692307,
+      "gt_y": 43.15384615384615,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU788.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU788.png",
+      "name": "XDU788",
+      "prompt_x": 242.0,
+      "prompt_y": 43.0,
+      "score": 0.7729600667953491
+    },
+    {
+      "area": 13,
+      "bbox": [
+        45,
+        269,
+        50,
+        273
+      ],
+      "distance_to_gt": 0.6201736729460493,
+      "gt_x": 270.53846153846155,
+      "gt_y": 46.69230769230769,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU788.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU788.png",
+      "name": "XDU788",
+      "prompt_x": 270.0,
+      "prompt_y": 47.0,
+      "score": 0.9755035042762756
+    },
+    {
+      "area": 14,
+      "bbox": [
+        46,
+        247,
+        51,
+        251
+      ],
+      "distance_to_gt": 0.2945075446869674,
+      "gt_x": 248.71428571428572,
+      "gt_y": 47.92857142857143,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU788.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU788.png",
+      "name": "XDU788",
+      "prompt_x": 249.0,
+      "prompt_y": 48.0,
+      "score": 0.495575487613678
+    },
+    {
+      "area": 5,
+      "bbox": [
+        46,
+        325,
+        48,
+        328
+      ],
+      "distance_to_gt": 0.4472135954999516,
+      "gt_x": 325.8,
+      "gt_y": 46.6,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU788.png",
+      "instance_id": 3,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU788.png",
+      "name": "XDU788",
+      "prompt_x": 326.0,
+      "prompt_y": 47.0,
+      "score": 0.9911329746246338
+    },
+    {
+      "area": 1,
+      "bbox": [
+        47,
+        350,
+        48,
+        351
+      ],
+      "distance_to_gt": 0.0,
+      "gt_x": 350.0,
+      "gt_y": 47.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU788.png",
+      "instance_id": 4,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU788.png",
+      "name": "XDU788",
+      "prompt_x": 350.0,
+      "prompt_y": 47.0,
+      "score": 0.9031325578689575
+    },
+    {
+      "area": 12,
+      "bbox": [
+        63,
+        370,
+        69,
+        374
+      ],
+      "distance_to_gt": 0.3726779962499692,
+      "gt_x": 370.8333333333333,
+      "gt_y": 65.33333333333333,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU788.png",
+      "instance_id": 5,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU788.png",
+      "name": "XDU788",
+      "prompt_x": 371.0,
+      "prompt_y": 65.0,
+      "score": 0.8838816285133362
+    },
+    {
+      "area": 17,
+      "bbox": [
+        67,
+        359,
+        73,
+        364
+      ],
+      "distance_to_gt": 0.31677440041969473,
+      "gt_x": 360.70588235294116,
+      "gt_y": 69.88235294117646,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU788.png",
+      "instance_id": 6,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU788.png",
+      "name": "XDU788",
+      "prompt_x": 361.0,
+      "prompt_y": 70.0,
+      "score": 0.8118109107017517
+    },
+    {
+      "area": 9,
+      "bbox": [
+        67,
+        390,
+        71,
+        395
+      ],
+      "distance_to_gt": 0.5983516452371578,
+      "gt_x": 392.55555555555554,
+      "gt_y": 67.77777777777777,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU788.png",
+      "instance_id": 7,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU788.png",
+      "name": "XDU788",
+      "prompt_x": 392.0,
+      "prompt_y": 68.0,
+      "score": 0.9999686479568481
+    },
+    {
+      "area": 42,
+      "bbox": [
+        328,
+        276,
+        336,
+        285
+      ],
+      "distance_to_gt": 0.9361715833970365,
+      "gt_x": 279.8809523809524,
+      "gt_y": 332.07142857142856,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU789.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU789.png",
+      "name": "XDU789",
+      "prompt_x": 280.0,
+      "prompt_y": 333.0,
+      "score": 0.999982476234436
+    },
+    {
+      "area": 8,
+      "bbox": [
+        218,
+        237,
+        222,
+        241
+      ],
+      "distance_to_gt": 0.7071067811865476,
+      "gt_x": 238.5,
+      "gt_y": 219.5,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU794.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU794.png",
+      "name": "XDU794",
+      "prompt_x": 239.0,
+      "prompt_y": 219.0,
+      "score": 0.9185864925384521
+    },
+    {
+      "area": 24,
+      "bbox": [
+        267,
+        205,
+        273,
+        214
+      ],
+      "distance_to_gt": 1.673423802335282,
+      "gt_x": 209.58333333333334,
+      "gt_y": 270.4583333333333,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU801.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU801.png",
+      "name": "XDU801",
+      "prompt_x": 208.0,
+      "prompt_y": 271.0,
+      "score": 0.9999418258666992
+    },
+    {
+      "area": 30,
+      "bbox": [
+        184,
+        154,
+        191,
+        161
+      ],
+      "distance_to_gt": 1.5961759858417286,
+      "gt_x": 156.76666666666668,
+      "gt_y": 186.6,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU803.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU803.png",
+      "name": "XDU803",
+      "prompt_x": 156.0,
+      "prompt_y": 188.0,
+      "score": 0.9999258518218994
+    },
+    {
+      "area": 13,
+      "bbox": [
+        175,
+        234,
+        179,
+        238
+      ],
+      "distance_to_gt": 0.4142434467026586,
+      "gt_x": 235.6153846153846,
+      "gt_y": 176.84615384615384,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU805.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU805.png",
+      "name": "XDU805",
+      "prompt_x": 236.0,
+      "prompt_y": 177.0,
+      "score": 0.9999665021896362
+    },
+    {
+      "area": 11,
+      "bbox": [
+        175,
+        326,
+        180,
+        330
+      ],
+      "distance_to_gt": 1.1853095282186665,
+      "gt_x": 327.09090909090907,
+      "gt_y": 177.8181818181818,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU805.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU805.png",
+      "name": "XDU805",
+      "prompt_x": 327.0,
+      "prompt_y": 179.0,
+      "score": 0.935676634311676
+    },
+    {
+      "area": 70,
+      "bbox": [
+        250,
+        215,
+        264,
+        224
+      ],
+      "distance_to_gt": 0.9139508315270347,
+      "gt_x": 218.61428571428573,
+      "gt_y": 257.8285714285714,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU816.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU816.png",
+      "name": "XDU816",
+      "prompt_x": 219.0,
+      "prompt_y": 257.0,
+      "score": 0.9999595880508423
+    },
+    {
+      "area": 9,
+      "bbox": [
+        33,
+        383,
+        36,
+        386
+      ],
+      "distance_to_gt": 1.0,
+      "gt_x": 384.0,
+      "gt_y": 34.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU817.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU817.png",
+      "name": "XDU817",
+      "prompt_x": 384.0,
+      "prompt_y": 33.0,
+      "score": 0.9673943519592285
+    },
+    {
+      "area": 18,
+      "bbox": [
+        77,
+        326,
+        80,
+        332
+      ],
+      "distance_to_gt": 0.5,
+      "gt_x": 328.5,
+      "gt_y": 78.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU817.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU817.png",
+      "name": "XDU817",
+      "prompt_x": 329.0,
+      "prompt_y": 78.0,
+      "score": 0.7119678854942322
+    },
+    {
+      "area": 20,
+      "bbox": [
+        122,
+        125,
+        127,
+        130
+      ],
+      "distance_to_gt": 0.11180339887498314,
+      "gt_x": 127.1,
+      "gt_y": 123.95,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU818.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU818.png",
+      "name": "XDU818",
+      "prompt_x": 127.0,
+      "prompt_y": 124.0,
+      "score": 0.9613466262817383
+    },
+    {
+      "area": 24,
+      "bbox": [
+        155,
+        178,
+        160,
+        184
+      ],
+      "distance_to_gt": 0.8186201126828474,
+      "gt_x": 180.20833333333334,
+      "gt_y": 157.20833333333334,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU829.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU829.png",
+      "name": "XDU829",
+      "prompt_x": 180.0,
+      "prompt_y": 158.0,
+      "score": 0.9999737739562988
+    },
+    {
+      "area": 54,
+      "bbox": [
+        281,
+        174,
+        288,
+        190
+      ],
+      "distance_to_gt": 1.0151459313826479,
+      "gt_x": 181.62962962962962,
+      "gt_y": 284.2037037037037,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU833.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU833.png",
+      "name": "XDU833",
+      "prompt_x": 181.0,
+      "prompt_y": 285.0,
+      "score": 0.6851562857627869
+    },
+    {
+      "area": 13,
+      "bbox": [
+        86,
+        56,
+        90,
+        62
+      ],
+      "distance_to_gt": 0.9389658165948949,
+      "gt_x": 58.76923076923077,
+      "gt_y": 87.46153846153847,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU842.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU842.png",
+      "name": "XDU842",
+      "prompt_x": 58.0,
+      "prompt_y": 88.0,
+      "score": 0.999980092048645
+    },
+    {
+      "area": 14,
+      "bbox": [
+        240,
+        271,
+        244,
+        276
+      ],
+      "distance_to_gt": 0.2575393768188767,
+      "gt_x": 272.85714285714283,
+      "gt_y": 241.21428571428572,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU845.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU845.png",
+      "name": "XDU845",
+      "prompt_x": 273.0,
+      "prompt_y": 241.0,
+      "score": 0.9999816417694092
+    },
+    {
+      "area": 41,
+      "bbox": [
+        277,
+        185,
+        285,
+        192
+      ],
+      "distance_to_gt": 0.4627723405124383,
+      "gt_x": 188.4390243902439,
+      "gt_y": 281.1463414634146,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU850.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU850.png",
+      "name": "XDU850",
+      "prompt_x": 188.0,
+      "prompt_y": 281.0,
+      "score": 0.7188143730163574
+    },
+    {
+      "area": 69,
+      "bbox": [
+        278,
+        217,
+        290,
+        230
+      ],
+      "distance_to_gt": 0.22915055508465215,
+      "gt_x": 222.81159420289856,
+      "gt_y": 283.1304347826087,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU850.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU850.png",
+      "name": "XDU850",
+      "prompt_x": 223.0,
+      "prompt_y": 283.0,
+      "score": 0.32231634855270386
+    },
+    {
+      "area": 59,
+      "bbox": [
+        228,
+        333,
+        240,
+        343
+      ],
+      "distance_to_gt": 0.48475761512117543,
+      "gt_x": 337.2881355932203,
+      "gt_y": 233.38983050847457,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU855.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU855.png",
+      "name": "XDU855",
+      "prompt_x": 337.0,
+      "prompt_y": 233.0,
+      "score": 0.999893069267273
+    },
+    {
+      "area": 10,
+      "bbox": [
+        137,
+        38,
+        142,
+        41
+      ],
+      "distance_to_gt": 0.22360679774997896,
+      "gt_x": 38.8,
+      "gt_y": 138.9,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU862.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU862.png",
+      "name": "XDU862",
+      "prompt_x": 39.0,
+      "prompt_y": 139.0,
+      "score": 0.7769243717193604
+    },
+    {
+      "area": 10,
+      "bbox": [
+        257,
+        485,
+        262,
+        489
+      ],
+      "distance_to_gt": 0.6082762530298481,
+      "gt_x": 486.4,
+      "gt_y": 259.1,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU862.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU862.png",
+      "name": "XDU862",
+      "prompt_x": 487.0,
+      "prompt_y": 259.0,
+      "score": 0.9999616146087646
+    },
+    {
+      "area": 51,
+      "bbox": [
+        27,
+        338,
+        40,
+        343
+      ],
+      "distance_to_gt": 0.3615507630311131,
+      "gt_x": 339.6470588235294,
+      "gt_y": 33.07843137254902,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU863.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU863.png",
+      "name": "XDU863",
+      "prompt_x": 340.0,
+      "prompt_y": 33.0,
+      "score": 0.8052175641059875
+    },
+    {
+      "area": 23,
+      "bbox": [
+        336,
+        185,
+        344,
+        190
+      ],
+      "distance_to_gt": 0.7480282840906438,
+      "gt_x": 187.3913043478261,
+      "gt_y": 339.4347826086956,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU868.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU868.png",
+      "name": "XDU868",
+      "prompt_x": 188.0,
+      "prompt_y": 339.0,
+      "score": 0.9997988343238831
+    },
+    {
+      "area": 33,
+      "bbox": [
+        293,
+        195,
+        301,
+        200
+      ],
+      "distance_to_gt": 1.3281580000491717,
+      "gt_x": 197.1818181818182,
+      "gt_y": 296.6060606060606,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU87.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU87.png",
+      "name": "XDU87",
+      "prompt_x": 196.0,
+      "prompt_y": 296.0,
+      "score": 0.9999569654464722
+    },
+    {
+      "area": 12,
+      "bbox": [
+        251,
+        157,
+        256,
+        162
+      ],
+      "distance_to_gt": 0.9204467514322631,
+      "gt_x": 158.91666666666666,
+      "gt_y": 253.08333333333334,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU872.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU872.png",
+      "name": "XDU872",
+      "prompt_x": 158.0,
+      "prompt_y": 253.0,
+      "score": 0.9996771812438965
+    },
+    {
+      "area": 6,
+      "bbox": [
+        329,
+        243,
+        333,
+        246
+      ],
+      "distance_to_gt": 0.6009252125773368,
+      "gt_x": 244.33333333333334,
+      "gt_y": 330.5,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU876.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU876.png",
+      "name": "XDU876",
+      "prompt_x": 244.0,
+      "prompt_y": 330.0,
+      "score": 0.9999459981918335
+    },
+    {
+      "area": 85,
+      "bbox": [
+        153,
+        370,
+        167,
+        382
+      ],
+      "distance_to_gt": 0.3794003646258251,
+      "gt_x": 375.18823529411765,
+      "gt_y": 160.3294117647059,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU877.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU877.png",
+      "name": "XDU877",
+      "prompt_x": 375.0,
+      "prompt_y": 160.0,
+      "score": 0.9908857345581055
+    },
+    {
+      "area": 11,
+      "bbox": [
+        315,
+        273,
+        319,
+        278
+      ],
+      "distance_to_gt": 0.45454545454543904,
+      "gt_x": 275.0,
+      "gt_y": 316.45454545454544,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU881.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU881.png",
+      "name": "XDU881",
+      "prompt_x": 275.0,
+      "prompt_y": 316.0,
+      "score": 0.9999711513519287
+    },
+    {
+      "area": 6,
+      "bbox": [
+        244,
+        298,
+        247,
+        302
+      ],
+      "distance_to_gt": 0.0,
+      "gt_x": 300.0,
+      "gt_y": 245.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU883.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU883.png",
+      "name": "XDU883",
+      "prompt_x": 300.0,
+      "prompt_y": 245.0,
+      "score": 0.9999133348464966
+    },
+    {
+      "area": 18,
+      "bbox": [
+        190,
+        404,
+        194,
+        416
+      ],
+      "distance_to_gt": 1.4582671942674374,
+      "gt_x": 410.6111111111111,
+      "gt_y": 191.55555555555554,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU885.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU885.png",
+      "name": "XDU885",
+      "prompt_x": 412.0,
+      "prompt_y": 192.0,
+      "score": 0.9999414682388306
+    },
+    {
+      "area": 13,
+      "bbox": [
+        329,
+        105,
+        334,
+        109
+      ],
+      "distance_to_gt": 0.07692307692309441,
+      "gt_x": 107.0,
+      "gt_y": 331.0769230769231,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU888.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU888.png",
+      "name": "XDU888",
+      "prompt_x": 107.0,
+      "prompt_y": 331.0,
+      "score": 0.9998457431793213
+    },
+    {
+      "area": 12,
+      "bbox": [
+        94,
+        129,
+        99,
+        134
+      ],
+      "distance_to_gt": 0.41666666666667423,
+      "gt_x": 131.33333333333334,
+      "gt_y": 95.75,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU889.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU889.png",
+      "name": "XDU889",
+      "prompt_x": 131.0,
+      "prompt_y": 96.0,
+      "score": 0.9883870482444763
+    },
+    {
+      "area": 15,
+      "bbox": [
+        269,
+        138,
+        274,
+        142
+      ],
+      "distance_to_gt": 0.42687494916218344,
+      "gt_x": 139.73333333333332,
+      "gt_y": 270.6666666666667,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU889.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU889.png",
+      "name": "XDU889",
+      "prompt_x": 140.0,
+      "prompt_y": 271.0,
+      "score": 0.9999547004699707
+    },
+    {
+      "area": 21,
+      "bbox": [
+        197,
+        376,
+        201,
+        383
+      ],
+      "distance_to_gt": 0.5429406786186308,
+      "gt_x": 378.4761904761905,
+      "gt_y": 198.85714285714286,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU892.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU892.png",
+      "name": "XDU892",
+      "prompt_x": 379.0,
+      "prompt_y": 199.0,
+      "score": 0.9999715089797974
+    },
+    {
+      "area": 18,
+      "bbox": [
+        230,
+        246,
+        233,
+        253
+      ],
+      "distance_to_gt": 1.0957268290731166,
+      "gt_x": 248.55555555555554,
+      "gt_y": 231.05555555555554,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU892.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU892.png",
+      "name": "XDU892",
+      "prompt_x": 248.0,
+      "prompt_y": 232.0,
+      "score": 0.9738125801086426
+    },
+    {
+      "area": 15,
+      "bbox": [
+        194,
+        331,
+        200,
+        334
+      ],
+      "distance_to_gt": 0.9357112565078834,
+      "gt_x": 331.93333333333334,
+      "gt_y": 196.06666666666666,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU9.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU9.png",
+      "name": "XDU9",
+      "prompt_x": 331.0,
+      "prompt_y": 196.0,
+      "score": 0.9859930276870728
+    },
+    {
+      "area": 14,
+      "bbox": [
+        312,
+        304,
+        315,
+        310
+      ],
+      "distance_to_gt": 0.5050762722761031,
+      "gt_x": 306.5,
+      "gt_y": 313.07142857142856,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU902.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU902.png",
+      "name": "XDU902",
+      "prompt_x": 306.0,
+      "prompt_y": 313.0,
+      "score": 0.9999867677688599
+    },
+    {
+      "area": 13,
+      "bbox": [
+        333,
+        277,
+        337,
+        281
+      ],
+      "distance_to_gt": 1.3760418323075707,
+      "gt_x": 278.38461538461536,
+      "gt_y": 334.7692307692308,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU902.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU902.png",
+      "name": "XDU902",
+      "prompt_x": 279.0,
+      "prompt_y": 336.0,
+      "score": 0.5509721636772156
+    },
+    {
+      "area": 33,
+      "bbox": [
+        101,
+        271,
+        112,
+        280
+      ],
+      "distance_to_gt": 0.4121657729919719,
+      "gt_x": 274.6666666666667,
+      "gt_y": 106.24242424242425,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU919.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU919.png",
+      "name": "XDU919",
+      "prompt_x": 275.0,
+      "prompt_y": 106.0,
+      "score": 0.8173266649246216
+    },
+    {
+      "area": 16,
+      "bbox": [
+        163,
+        166,
+        167,
+        170
+      ],
+      "distance_to_gt": 0.7071067811865476,
+      "gt_x": 167.5,
+      "gt_y": 164.5,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU919.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU919.png",
+      "name": "XDU919",
+      "prompt_x": 168.0,
+      "prompt_y": 165.0,
+      "score": 0.5842966437339783
+    },
+    {
+      "area": 23,
+      "bbox": [
+        378,
+        174,
+        384,
+        180
+      ],
+      "distance_to_gt": 0.5289358721998432,
+      "gt_x": 176.52173913043478,
+      "gt_y": 379.9130434782609,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU919.png",
+      "instance_id": 3,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU919.png",
+      "name": "XDU919",
+      "prompt_x": 176.0,
+      "prompt_y": 380.0,
+      "score": 0.9999550580978394
+    },
+    {
+      "area": 19,
+      "bbox": [
+        320,
+        410,
+        324,
+        416
+      ],
+      "distance_to_gt": 0.5668594533825955,
+      "gt_x": 412.2105263157895,
+      "gt_y": 321.4736842105263,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU920.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU920.png",
+      "name": "XDU920",
+      "prompt_x": 412.0,
+      "prompt_y": 322.0,
+      "score": 0.9999617338180542
+    },
+    {
+      "area": 26,
+      "bbox": [
+        47,
+        440,
+        50,
+        450
+      ],
+      "distance_to_gt": 0.5,
+      "gt_x": 444.5,
+      "gt_y": 48.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU922.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU922.png",
+      "name": "XDU922",
+      "prompt_x": 444.0,
+      "prompt_y": 48.0,
+      "score": 0.9999816417694092
+    },
+    {
+      "area": 32,
+      "bbox": [
+        458,
+        345,
+        464,
+        353
+      ],
+      "distance_to_gt": 0.6067652449671125,
+      "gt_x": 348.5,
+      "gt_y": 460.65625,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU927.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU927.png",
+      "name": "XDU927",
+      "prompt_x": 348.0,
+      "prompt_y": 461.0,
+      "score": 0.833263635635376
+    },
+    {
+      "area": 15,
+      "bbox": [
+        489,
+        82,
+        495,
+        86
+      ],
+      "distance_to_gt": 0.6863753427324842,
+      "gt_x": 83.33333333333333,
+      "gt_y": 491.6,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU927.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU927.png",
+      "name": "XDU927",
+      "prompt_x": 83.0,
+      "prompt_y": 491.0,
+      "score": 0.9999706745147705
+    },
+    {
+      "area": 82,
+      "bbox": [
+        137,
+        306,
+        145,
+        319
+      ],
+      "distance_to_gt": 0.769839712296893,
+      "gt_x": 312.7682926829268,
+      "gt_y": 140.0487804878049,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU93.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU93.png",
+      "name": "XDU93",
+      "prompt_x": 312.0,
+      "prompt_y": 140.0,
+      "score": 0.9999899864196777
+    },
+    {
+      "area": 55,
+      "bbox": [
+        350,
+        143,
+        360,
+        156
+      ],
+      "distance_to_gt": 0.5541727510592263,
+      "gt_x": 149.63636363636363,
+      "gt_y": 354.58181818181816,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU932.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU932.png",
+      "name": "XDU932",
+      "prompt_x": 150.0,
+      "prompt_y": 355.0,
+      "score": 0.8164516091346741
+    },
+    {
+      "area": 16,
+      "bbox": [
+        97,
+        210,
+        103,
+        213
+      ],
+      "distance_to_gt": 0.19764235376052372,
+      "gt_x": 211.0625,
+      "gt_y": 99.1875,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU933.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU933.png",
+      "name": "XDU933",
+      "prompt_x": 211.0,
+      "prompt_y": 99.0,
+      "score": 0.9834477305412292
+    },
+    {
+      "area": 24,
+      "bbox": [
+        237,
+        427,
+        244,
+        432
+      ],
+      "distance_to_gt": 0.5303300858899106,
+      "gt_x": 428.625,
+      "gt_y": 240.375,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU933.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU933.png",
+      "name": "XDU933",
+      "prompt_x": 429.0,
+      "prompt_y": 240.0,
+      "score": 0.5621989369392395
+    },
+    {
+      "area": 19,
+      "bbox": [
+        332,
+        217,
+        337,
+        221
+      ],
+      "distance_to_gt": 0.43401111848608187,
+      "gt_x": 218.57894736842104,
+      "gt_y": 333.89473684210526,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU933.png",
+      "instance_id": 2,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU933.png",
+      "name": "XDU933",
+      "prompt_x": 219.0,
+      "prompt_y": 334.0,
+      "score": 0.9999208450317383
+    },
+    {
+      "area": 14,
+      "bbox": [
+        250,
+        325,
+        254,
+        330
+      ],
+      "distance_to_gt": 1.0227015045197352,
+      "gt_x": 327.42857142857144,
+      "gt_y": 251.07142857142858,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU935.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU935.png",
+      "name": "XDU935",
+      "prompt_x": 327.0,
+      "prompt_y": 252.0,
+      "score": 0.8613049387931824
+    },
+    {
+      "area": 21,
+      "bbox": [
+        296,
+        276,
+        300,
+        282
+      ],
+      "distance_to_gt": 0.5061974196540389,
+      "gt_x": 278.6190476190476,
+      "gt_y": 297.3333333333333,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU935.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU935.png",
+      "name": "XDU935",
+      "prompt_x": 279.0,
+      "prompt_y": 297.0,
+      "score": 0.9999115467071533
+    },
+    {
+      "area": 33,
+      "bbox": [
+        365,
+        362,
+        368,
+        378
+      ],
+      "distance_to_gt": 2.6328782254843315,
+      "gt_x": 369.42424242424244,
+      "gt_y": 365.54545454545456,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU943.png",
+      "instance_id": 1,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU943.png",
+      "name": "XDU943",
+      "prompt_x": 372.0,
+      "prompt_y": 365.0,
+      "score": 0.8635053038597107
+    },
+    {
+      "area": 23,
+      "bbox": [
+        370,
+        120,
+        374,
+        129
+      ],
+      "distance_to_gt": 0.7010658911563981,
+      "gt_x": 123.69565217391305,
+      "gt_y": 371.9130434782609,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU954.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU954.png",
+      "name": "XDU954",
+      "prompt_x": 123.0,
+      "prompt_y": 372.0,
+      "score": 0.9999723434448242
+    },
+    {
+      "area": 14,
+      "bbox": [
+        153,
+        222,
+        157,
+        227
+      ],
+      "distance_to_gt": 0.8630747123996065,
+      "gt_x": 223.64285714285714,
+      "gt_y": 154.21428571428572,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU955.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU955.png",
+      "name": "XDU955",
+      "prompt_x": 224.0,
+      "prompt_y": 155.0,
+      "score": 0.9999226331710815
+    },
+    {
+      "area": 79,
+      "bbox": [
+        282,
+        88,
+        288,
+        107
+      ],
+      "distance_to_gt": 0.41791326630932557,
+      "gt_x": 96.0126582278481,
+      "gt_y": 284.5822784810127,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU957.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU957.png",
+      "name": "XDU957",
+      "prompt_x": 96.0,
+      "prompt_y": 285.0,
+      "score": 0.9992938041687012
+    },
+    {
+      "area": 35,
+      "bbox": [
+        95,
+        337,
+        102,
+        350
+      ],
+      "distance_to_gt": 1.691756724924281,
+      "gt_x": 343.14285714285717,
+      "gt_y": 97.68571428571428,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU966.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU966.png",
+      "name": "XDU966",
+      "prompt_x": 343.0,
+      "prompt_y": 96.0,
+      "score": 0.9999843835830688
+    },
+    {
+      "area": 31,
+      "bbox": [
+        58,
+        386,
+        62,
+        396
+      ],
+      "distance_to_gt": 0.8243182154310182,
+      "gt_x": 391.4193548387097,
+      "gt_y": 59.70967741935484,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU968.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU968.png",
+      "name": "XDU968",
+      "prompt_x": 391.0,
+      "prompt_y": 59.0,
+      "score": 0.9439897537231445
+    },
+    {
+      "area": 40,
+      "bbox": [
+        279,
+        335,
+        286,
+        342
+      ],
+      "distance_to_gt": 0.2263846284534555,
+      "gt_x": 337.975,
+      "gt_y": 282.225,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU97.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU97.png",
+      "name": "XDU97",
+      "prompt_x": 338.0,
+      "prompt_y": 282.0,
+      "score": 0.9998267292976379
+    },
+    {
+      "area": 24,
+      "bbox": [
+        198,
+        233,
+        202,
+        239
+      ],
+      "distance_to_gt": 0.7071067811865476,
+      "gt_x": 235.5,
+      "gt_y": 199.5,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU996.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU996.png",
+      "name": "XDU996",
+      "prompt_x": 236.0,
+      "prompt_y": 200.0,
+      "score": 0.9999520778656006
+    },
+    {
+      "area": 12,
+      "bbox": [
+        80,
+        426,
+        83,
+        430
+      ],
+      "distance_to_gt": 1.118033988749895,
+      "gt_x": 427.5,
+      "gt_y": 81.0,
+      "image_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/images/XDU999.png",
+      "instance_id": 0,
+      "mask_path": "/root/rivermind-data/ellicore/datasets/IRSTD-1K/masks/XDU999.png",
+      "name": "XDU999",
+      "prompt_x": 427.0,
+      "prompt_y": 80.0,
+      "score": 0.9735684990882874
+    }
+  ],
+  "stats": {
+    "gt_recall_within_radius": 0.9393939393939394,
+    "matched_gt_within_radius": 279,
+    "mean_distance_to_gt": 0.715892997998258,
+    "median_distance_to_gt": 0.6566872811736113,
+    "p90_distance_to_gt": 1.2556370455843948,
+    "selected_entries": 279,
+    "total_gt": 297,
+    "total_images": 201,
+    "total_matched_proposals": 279,
+    "total_proposals": 365
+  }
+}
