@@ -15,7 +15,10 @@ from ellipse_utils import component_instances, crop_with_pad, make_center_hint, 
 from engine import load_checkpoint
 from metrics import FastIoU, SegMetrics
 from point_model import LiteUNet, extract_peaks
+from proposal_scorer import ROIScorer, extract_roi_features
 from verifier_model import ProposalVerifierNet
+from cnet_model import CandidateFormationNet
+from cnet_utils import extract_candidate_centers
 
 
 def _local_contrast(image: np.ndarray, cx: float, cy: float, inner: int = 3, outer: int = 8) -> float:
@@ -109,7 +112,7 @@ def _filter_proposals(
 def parse_args():
     parser = argparse.ArgumentParser(description="Full pipeline evaluation: point detector → ellipse reconstruction")
     parser.add_argument("--dataset-name", type=str, default="irstd1k")
-    parser.add_argument("--point-checkpoint", type=str, required=True)
+    parser.add_argument("--point-checkpoint", type=str, default=None)
     parser.add_argument("--ellipse-checkpoint", type=str, required=True)
     parser.add_argument("--patch-size", type=int, default=32)
     parser.add_argument("--base-channels", type=int, default=32)
@@ -137,11 +140,27 @@ def parse_args():
     parser.add_argument("--max-aspect-ratio", type=float, default=None, help="Max a/b ratio to keep")
     # --- V2: Oracle verifier ---
     parser.add_argument("--oracle-match-radius", type=float, default=None, help="Keep only proposals within this distance of GT centroid")
-    # --- V1: Learned verifier ---
+    # --- V1: Learned verifier (independent patch) ---
     parser.add_argument("--verifier-checkpoint", type=str, default=None, help="Path to trained verifier checkpoint")
     parser.add_argument("--verifier-threshold", type=float, default=0.5, help="Min verifier score to keep proposal")
     parser.add_argument("--verifier-base-channels", type=int, default=16)
     parser.add_argument("--verifier-hidden-dim", type=int, default=64)
+    # --- V1b: ROI scorer (shared backbone) ---
+    parser.add_argument("--roi-scorer-checkpoint", type=str, default=None, help="Path to trained ROI scorer checkpoint")
+    parser.add_argument("--roi-scorer-threshold", type=float, default=0.5, help="Min ROI scorer score to keep proposal")
+    parser.add_argument("--roi-size", type=int, default=7)
+    parser.add_argument("--roi-radius", type=float, default=3.0)
+    # --- V1c: Three-head candidate net ---
+    parser.add_argument("--candidate-ckpt", type=str, default=None, help="Path to CandidateNet checkpoint")
+    parser.add_argument("--quality-thresh", type=float, default=0.5, help="Min quality score to keep proposal")
+    parser.add_argument("--use-offset", action="store_true", default=True, help="Apply offset refinement")
+    parser.add_argument("--no-offset", action="store_false", dest="use_offset")
+    # --- CNet: Center-voting candidate network ---
+    parser.add_argument("--cnet-checkpoint", type=str, default=None, help="Path to CNet checkpoint")
+    parser.add_argument("--cnet-score-thresh", type=float, default=0.25, help="CNet score threshold")
+    parser.add_argument("--cnet-topk", type=int, default=16, help="CNet max candidates per image")
+    parser.add_argument("--cnet-nms-kernel", type=int, default=7, help="CNet NMS kernel size")
+    parser.add_argument("--cnet-base-channels", type=int, default=32)
     return parser.parse_args()
 
 
@@ -153,8 +172,11 @@ def main():
     validate_dataset_config(config, require_train_split=False)
 
     # Load models
-    point_model = LiteUNet(in_channels=1).to(device)
-    load_checkpoint(Path(args.point_checkpoint), point_model, map_location=str(device))
+    point_model = None
+    if args.point_checkpoint:
+        point_model = LiteUNet(in_channels=1).to(device)
+        load_checkpoint(Path(args.point_checkpoint), point_model, map_location=str(device))
+        point_model.eval()
 
     from ellipse_model import CentroidConditionedEllipseNet
     ellipse_model = CentroidConditionedEllipseNet(
@@ -162,7 +184,8 @@ def main():
     ).to(device)
     load_checkpoint(Path(args.ellipse_checkpoint), ellipse_model, map_location=str(device))
 
-    point_model.eval()
+    if point_model is not None:
+        point_model.eval()
     ellipse_model.eval()
 
     # Load verifier if provided
@@ -174,6 +197,32 @@ def main():
         ).to(device)
         load_checkpoint(Path(args.verifier_checkpoint), verifier_model, map_location=str(device))
         verifier_model.eval()
+
+    # Load ROI scorer if provided
+    roi_scorer = None
+    if args.roi_scorer_checkpoint:
+        roi_scorer = ROIScorer(in_channels=16, hidden_dim=64).to(device)
+        load_checkpoint(Path(args.roi_scorer_checkpoint), roi_scorer, map_location=str(device))
+        roi_scorer.eval()
+
+    # Load candidate net if provided
+    candidate_net = None
+    if args.candidate_ckpt:
+        from candidate_net import CandidateNet
+        candidate_net = CandidateNet(in_channels=1, channels=(16, 32, 64)).to(device)
+        load_checkpoint(Path(args.candidate_ckpt), candidate_net, map_location=str(device))
+        candidate_net.eval()
+
+    # Load CNet if provided
+    cnet_model = None
+    if args.cnet_checkpoint:
+        cnet_model = CandidateFormationNet(
+            in_channels=1, base_channels=args.cnet_base_channels,
+            max_candidates=args.cnet_topk, nms_kernel=args.cnet_nms_kernel,
+            score_threshold=args.cnet_score_thresh,
+        ).to(device)
+        load_checkpoint(Path(args.cnet_checkpoint), cnet_model, map_location=str(device))
+        cnet_model.eval()
 
     # Get image records
     from data import resolve_full_records
@@ -205,9 +254,48 @@ def main():
                 points.append((float(inst["centroid_x"]), float(inst["centroid_y"])))
                 scores.append(1.0)
             proposals = [(x, y, s) for (x, y), s in zip(points, scores)]
-        else:
+        elif cnet_model is not None:
+            # CNet: center-voting candidate network
             image_tensor = torch.from_numpy(image_norm).unsqueeze(0).unsqueeze(0).float().to(device)
-            pred_heatmap = point_model(image_tensor)
+            with torch.no_grad():
+                outputs = cnet_model(image_tensor, return_candidates=True)
+            coords = outputs["coords"][0]      # [topk, 2] in (y, x)
+            scores = outputs["scores"][0]       # [topk]
+            valid = outputs["valid_mask"][0]    # [topk]
+            proposals = []
+            for i in range(coords.shape[0]):
+                if valid[i]:
+                    cy, cx = float(coords[i, 0]), float(coords[i, 1])
+                    s = float(scores[i])
+                    proposals.append((cx, cy, s))
+        elif candidate_net is not None:
+            # Three-head candidate net: heatmap + quality + offset
+            image_tensor = torch.from_numpy(image_norm).unsqueeze(0).unsqueeze(0).float().to(device)
+            with torch.no_grad():
+                outputs = candidate_net(image_tensor)
+            hm = torch.sigmoid(outputs["heatmap_logits"])
+            ql = torch.sigmoid(outputs["quality_logits"])
+            off = outputs["offset_map"]
+            peaks = extract_peaks(hm[0], threshold=args.point_threshold, min_distance=args.min_distance)
+            proposals = []
+            for px, py, pscore in peaks:
+                qs = float(ql[0, 0, int(round(py)), int(round(px))].detach())
+                if qs < args.quality_thresh:
+                    continue
+                if args.use_offset:
+                    dx = float(off[0, 0, int(round(py)), int(round(px))].detach())
+                    dy = float(off[0, 1, int(round(py)), int(round(px))].detach())
+                    px = px + dx
+                    py = py + dy
+                proposals.append((px, py, pscore))
+        else:
+            if point_model is None:
+                raise ValueError("No point source specified. Use --point-checkpoint, --cnet-checkpoint, --candidate-ckpt, or --mode oracle_point")
+            image_tensor = torch.from_numpy(image_norm).unsqueeze(0).unsqueeze(0).float().to(device)
+            if roi_scorer is not None:
+                pred_heatmap, _ = point_model.forward_with_features(image_tensor)
+            else:
+                pred_heatmap = point_model(image_tensor)
             peaks = extract_peaks(pred_heatmap[0], threshold=args.point_threshold, min_distance=args.min_distance)
             proposals = [(p[0], p[1], p[2]) for p in peaks]
 
@@ -241,6 +329,20 @@ def main():
                 ver_logits = verifier_model(batch_img_t, batch_hint_t, batch_score_t)
                 ver_scores = ver_logits.sigmoid().squeeze(-1).cpu().numpy()
             proposals = [(px, py, ps) for (px, py, ps), vs in zip(proposals, ver_scores) if vs >= args.verifier_threshold]
+
+        # ROI scorer filter (shared backbone)
+        if roi_scorer is not None and len(proposals) > 0:
+            with torch.no_grad():
+                _, feat = point_model.forward_with_features(image_tensor)
+            roi_xs = torch.tensor([px for px, _, _ in proposals], dtype=torch.float32, device=device)
+            roi_ys = torch.tensor([py for _, py, _ in proposals], dtype=torch.float32, device=device)
+            roi_ps = torch.tensor([ps for _, _, ps in proposals], dtype=torch.float32, device=device)
+            roi_bidx = torch.zeros(len(proposals), dtype=torch.long, device=device)
+            roi_feat = extract_roi_features(feat, roi_bidx, roi_xs, roi_ys,
+                                            roi_size=args.roi_size, radius=args.roi_radius)
+            roi_logits = roi_scorer(roi_feat, roi_ps)
+            roi_scores = roi_logits.sigmoid().detach().cpu().numpy()
+            proposals = [(px, py, ps) for (px, py, ps), vs in zip(proposals, roi_scores) if vs >= args.roi_scorer_threshold]
 
         total_post_filter += len(proposals)
 

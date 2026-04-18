@@ -63,6 +63,25 @@ class LiteUNet(nn.Module):
 
         return torch.sigmoid(self.out_conv(d0))
 
+    def forward_with_features(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        """Return (heatmap, decoder_feature) where decoder_feature is [B,16,H,W]."""
+        e0 = self.enc0(x)
+        e1 = self.enc1(self.pool(e0))
+        e2 = self.enc2(self.pool(e1))
+
+        up1 = self.up1(e2)
+        if up1.shape[-2:] != e1.shape[-2:]:
+            up1 = up1[:, :, :e1.shape[-2], :e1.shape[-1]]
+        d1 = self.dec1(torch.cat([up1, e1], dim=1))
+
+        up0 = self.up0(d1)
+        if up0.shape[-2:] != e0.shape[-2:]:
+            up0 = up0[:, :, :e0.shape[-2], :e0.shape[-1]]
+        d0 = self.dec0(torch.cat([up0, e0], dim=1))
+
+        heatmap = torch.sigmoid(self.out_conv(d0))
+        return heatmap, d0
+
 
 def extract_peaks(heatmap: torch.Tensor, threshold: float = 0.3, min_distance: int = 3) -> list[tuple[float, float, float]]:
     """Extract peak points from a heatmap.
